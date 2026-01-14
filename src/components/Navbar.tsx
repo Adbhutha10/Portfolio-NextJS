@@ -32,15 +32,15 @@ export default function Navbar() {
 
     return (
         <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
+            initial={{ y: -100, x: "-50%", opacity: 0 }}
+            animate={{ y: 0, x: "-50%", opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-[#121212]/80 backdrop-blur-md border-b border-white/5 py-4'
-                    : 'bg-transparent py-6'
+            className={`fixed top-6 left-1/2 z-50 w-[95%] max-w-5xl rounded-full transition-all duration-300 border border-white/10 ${scrolled
+                    ? 'bg-[#121212]/80 backdrop-blur-md shadow-lg shadow-black/20 py-3'
+                    : 'bg-[#121212]/40 backdrop-blur-sm py-4'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+            <div className="px-6 flex items-center justify-between">
 
                 {/* Logo / Name */}
                 <a href="#home" onClick={(e) => scrollToSection(e, '#home')} className="text-xl font-bold tracking-tight hover:text-blue-400 transition-colors">

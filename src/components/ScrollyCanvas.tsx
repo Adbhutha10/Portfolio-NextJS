@@ -22,7 +22,7 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
             for (let i = 0; i < frameCount; i++) {
                 const p = new Promise<HTMLImageElement>((resolve, reject) => {
                     const img = new Image();
-                    img.src = `/sequence/${i.toString().padStart(3, '0')}.png`;
+                    img.src = `/sequence/${i.toString().padStart(3, '0')}.webp`;
                     img.onload = () => resolve(img);
                     img.onerror = () => reject(new Error(`Failed to load frame ${i}`));
                 });
