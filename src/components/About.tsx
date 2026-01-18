@@ -80,7 +80,7 @@ export default function About() {
                                 <div className="relative group">
                                     <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-blue-500 bg-[#0a0a0a] group-hover:bg-blue-500 transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-white">Feedback and Review Manager</h4>
-                                    <p className="text-sm text-blue-300 font-mono tracking-wide mb-3 mt-1">CODING BRIGADE BVRIT • DE 2025 - PRESENT</p>
+                                    <p className="text-sm text-blue-300 font-mono tracking-wide mb-3 mt-1">CODING BRIGADE BVRIT • DEC 2025 - PRESENT</p>
                                     <p className="text-gray-400 leading-relaxed">
                                         Managing and reviewing project submissions to ensure quality, clarity, and adherence to coding standards. Providing constructive feedback to students, helping refine their problem-solving approaches, and supporting the club in organizing coding challenges and review-based learning activities. Facilitating a collaborative environment that encourages continuous improvement and technical skill development among members.
                                     </p>
@@ -132,7 +132,7 @@ export default function About() {
                             </div>
                             <div className="flex items-center gap-2 mt-auto text-sm text-gray-500">
                                 <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                                CGPA: <span className="text-gray-300 font-medium text-lg">9.64</span>
+                                CGPA: <span className="text-gray-300 font-medium text-lg">9.57</span>
                             </div>
                         </div>
 

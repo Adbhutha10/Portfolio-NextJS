@@ -33,7 +33,7 @@ export default function Contact() {
                     <div className="flex gap-8 mt-8">
                         <a href="https://linkedin.com/in/adbhutha" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-lg font-medium transition-colors">LinkedIn</a>
                         <a href="https://github.com/Adbhutha10" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-lg font-medium transition-colors">GitHub</a>
-                        <a href="https://adbhutha10.github.io/Adbhutha-Portfolio/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-lg font-medium transition-colors">Old Portfolio</a>
+                        {/* <a href="https://adbhutha10.github.io/Adbhutha-Portfolio/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-lg font-medium transition-colors">Old Portfolio</a> */}
                     </div>
 
                     <div className="mt-24 text-gray-600 text-sm">

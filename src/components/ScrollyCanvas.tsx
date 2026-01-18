@@ -111,7 +111,7 @@ export default function ScrollyCanvas({ scrollYProgress }: ScrollyCanvasProps) {
             />
             {!isLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center text-white/50 bg-black z-50">
-                    Loading Sequence...
+                    Portfolio...
                 </div>
             )}
         </div>
