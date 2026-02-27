@@ -1,0 +1,238 @@
+[
+    {
+        "keys": [
+            "hi",
+            "hello",
+            "hey",
+            "hii",
+            "yo",
+            "namaste",
+            "namaskaram",
+            "vanakkam",
+            "namaskara",
+            "salaam"
+        ],
+        "a": "Hello 👋 Welcome to Adbhutha's portfolio! I'm her AI assistant. You can ask me about her skills, projects, or research."
+    },
+    {
+        "keys": [
+            "good morning",
+            "good afternoon",
+            "good evening",
+            "subhodayam",
+            "suprabhat",
+            "kaalai vanakkam"
+        ],
+        "a": "Hello 😊 Hope you're having a great day! I can help you explore Adbhutha's work and achievements."
+    },
+    {
+        "keys": [
+            "how are you",
+            "how r u",
+            "how are you doing",
+            "ela unnaru",
+            "kaise ho",
+            "epdi iruka"
+        ],
+        "a": "I'm doing great 😄 Thanks for asking! I'm optimized to help you learn more about Adbhutha's technical journey."
+    },
+    {
+        "keys": [
+            "what's up",
+            "wassup",
+            "em chestunnav",
+            "kya chal raha hai"
+        ],
+        "a": "All good here 😄 Ready to talk about Adbhutha's projects or her research at NRSC!"
+    },
+    {
+        "keys": [
+            "who are you",
+            "what are you",
+            "meeru evaru",
+            "tum kaun ho",
+            "neenga yaar"
+        ],
+        "a": "I'm Adbhutha's Portfolio Assistant 🤖 here to guide you through her professional details."
+    },
+    {
+        "keys": [
+            "who made you",
+            "who created you",
+            "ninnu evaru chesaru",
+            "kisne banaya"
+        ],
+        "a": "I was integrated into this portfolio by Adbhutha to provide an interactive experience for visitors 😊"
+    },
+    {
+        "keys": [
+            "are you ai",
+            "are you real",
+            "nuvvu ai aa",
+            "tum robot ho"
+        ],
+        "a": "I'm a smart portfolio assistant 🤖 built using Next.js and React to represent Adbhutha's work."
+    },
+    {
+        "keys": [
+            "help",
+            "what can you do",
+            "options",
+            "help me"
+        ],
+        "a": "I can tell you about Adbhutha's projects (like the NRSC satellite work), her skills in ML/Web Dev, her 9.57 CGPA, or her roles at GDG and Coding Brigade."
+    },
+    {
+        "keys": [
+            "what should i ask",
+            "what to ask",
+            "em adagali",
+            "topics"
+        ],
+        "a": "Try asking about her:\n- 'Research Paper' (IEEE Cloud Masking)\n- 'NRSC Project'\n- 'BVRIT Connect' (Alumni Platform)\n- 'Technical Skills' (Full Stack & ML)\n- 'Leadership' (GDG & CBB)"
+    },
+    {
+        "keys": [
+            "resume",
+            "cv",
+            "resume link",
+            "biodata"
+        ],
+        "a": "Adbhutha's resume highlights her 9.57 CGPA and high-impact projects. You can request a copy via LinkedIn or check the contact section!"
+    },
+    {
+        "keys": [
+            "job",
+            "hire",
+            "internship",
+            "hiring",
+            "job kavali",
+            "opportunity"
+        ],
+        "a": "Adbhutha is open to collaborations, internships, and research opportunities in AI, Machine Learning, and Full Stack development. She's a fast learner with a product-focused mindset!"
+    },
+    {
+        "keys": [
+            "experience",
+            "work experience",
+            "experience unda",
+            "internship experience"
+        ],
+        "a": "Adbhutha has served as:\n- Technical Co-Lead at GDG on Campus\n- Feedback and Review Manager at Coding Brigade\n- Contributor at GirlScript Summer of Code (GSSoC)\n- Project lead for satellite imagery research at NRSC."
+    },
+    {
+        "keys": [
+            "college",
+            "education",
+            "chaduvu",
+            "university",
+            "btech",
+            "studies"
+        ],
+        "a": "Adbhutha is pursuing her B.Tech in Computer Science at BVRIT Narsapur (2023-2027) with an outstanding cumulative GPA of 9.57."
+    },
+    {
+        "keys": [
+            "nice",
+            "good",
+            "awesome",
+            "cool",
+            "great",
+            "super",
+            "mast",
+            "wow"
+        ],
+        "a": "Thank you! 😊 Adbhutha puts a lot of effort into making her work both technically sound and visually appealing."
+    },
+    {
+        "keys": [
+            "thank you",
+            "thanks",
+            "thx",
+            "dhanyavad",
+            "thanks bro"
+        ],
+        "a": "You're very welcome 😄 Happy to help! Is there anything else you'd like to know about Adbhutha?"
+    },
+    {
+        "keys": [
+            "alumni student connect",
+            "bvrit connect",
+            "alumni platform",
+            "student platform"
+        ],
+        "a": "The 'BVRIT Alumni-Student Connect' is a role-based networking platform built with React, TypeScript, and Firebase. It features dashboards for students and alumni to facilitate mentorship and job networking."
+    },
+    {
+        "keys": [
+            "cloud masking",
+            "satellite images",
+            "resourcesat",
+            "nrsc project",
+            "isro"
+        ],
+        "a": "Adbhutha worked on Cloud Masking using Resourcesat-2 images at NRSC (ISRO). She used unsupervised classification techniques like K-means and ISODATA to accurately detect cloud cover in satellite imagery."
+    },
+    {
+        "keys": [
+            "crop price prediction",
+            "ml project",
+            "agriculture project"
+        ],
+        "a": "The 'Crop Price Prediction' project uses Machine Learning to forecast market prices. It helps farmers make informed decisions about when to sell their produce for maximum profit."
+    },
+    {
+        "keys": [
+            "gdg",
+            "google developer group",
+            "organizer",
+            "co-lead"
+        ],
+        "a": "As an Organizer/Technical Co-Lead at GDG on Campus, Adbhutha leads technical initiatives, organizes workshops, and builds the developer community at BVRIT."
+    },
+    {
+        "keys": [
+            "coding brigade",
+            "cbb",
+            "manager"
+        ],
+        "a": "As the Feedback and Review Manager at Coding Brigade, she ensured high-quality peer reviews and maintained technical standards within the club."
+    },
+    {
+        "keys": [
+            "technical skills",
+            "tech stack",
+            "languages",
+            "tools"
+        ],
+        "a": "Adbhutha is proficient in:\n- Languages: Python, JavaScript, Java, C, C++\n- Frontend: React.js, Next.js, Tailwind CSS\n- Backend: Node.js, Express.js\n- AI/ML: TensorFlow, PyTorch, Scikit-learn\n- Tools: Docker, Git, AWS, Firebase"
+    },
+    {
+        "keys": [
+            "research paper",
+            "ieee",
+            "publication",
+            "ieee xplore"
+        ],
+        "a": "Adbhutha's research paper 'Cloud Masking using resourcesat-2 images' is published in IEEE Xplore. It presents a robust method for cloud detection using multi-spectral satellite data."
+    },
+    {
+        "keys": [
+            "cgpa",
+            "grades",
+            "percentage",
+            "marks"
+        ],
+        "a": "Adbhutha maintains an exceptional academic record with a CGPA of 9.57!"
+    },
+    {
+        "keys": [
+            "bye",
+            "goodbye",
+            "see you",
+            "bye bye",
+            "vellostha"
+        ],
+        "a": "Goodbye 👋 Thanks for visiting Adbhutha's portfolio. Have a wonderful day!"
+    }
+]

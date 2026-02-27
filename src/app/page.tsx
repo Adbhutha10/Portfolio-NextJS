@@ -10,6 +10,7 @@ import Achievements from '@/components/Achievements';
 import Research from '@/components/Research';
 import Contact from '@/components/Contact';
 import Navbar from '@/components/Navbar';
+import Agent from '@/components/Agent';
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,6 +66,8 @@ export default function Home() {
       <div id="contact">
         <Contact />
       </div>
+
+      <Agent />
     </main>
   );
 }
