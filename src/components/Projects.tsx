@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GraduationCap, Cloud, Sprout, Ticket } from 'lucide-react';
+import { GraduationCap, Cloud, Sprout, Ticket, MessageSquare, Bell, Smartphone, AppWindow, Radar } from 'lucide-react';
 
 const projects = [
     {
@@ -35,6 +35,22 @@ const projects = [
         description: "Steamlined event discovery and booking system with secure Java/MySQL backend and interactive frontend.",
         link: "https://github.com/Adbhutha10/event-ticket-booking-system",
         icon: Ticket
+    },
+    {
+        id: 5,
+        title: "Query  Management System",
+        category: "Full Stack Web Application",
+        description: "Comprehensive query management platform with OTP-based authentication for Users, Admins, and Mentors, featuring intelligent priority detection, real-time status tracking, email notifications, and Excel report generation using Spring Boot, React, and MySQL.",
+        link: "https://github.com/Adbhutha10/Query-Management-System",
+        icon: MessageSquare
+    },
+    {
+        id: 6,
+        title: "Real-Time Court Case Tracking & Alert System",
+        category: "Mobile Application",
+        description: "Cross-platform mobile app for advocates that fetches live court case data, compares it with a master case list, and generates real-time color-coded and vibration-based alerts based on case proximity using Flutter and a Python backend.",
+        link: "https://github.com/Adbhutha10/court-monitoring-app",
+        icon: Smartphone
     }
 ];
 

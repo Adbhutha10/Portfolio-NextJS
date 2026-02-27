@@ -227,6 +227,24 @@
     },
     {
         "keys": [
+            "query management system",
+            "query management",
+            "query project",
+            "query management system project"
+        ],
+        "a": "The Query Management System is a full‑stack web application with OTP‑based authentication for users, admins, and mentors. It features intelligent priority detection, real‑time status tracking, email notifications, and Excel report generation, built with Spring Boot, React, and MySQL."
+    },
+    {
+        "keys": [
+            "court case tracking",
+            "real‑time court case tracking",
+            "court monitoring app",
+            "court alert system"
+        ],
+        "a": "The Real‑Time Court Case Tracking & Alert System is a cross‑platform mobile app for advocates. It fetches live court case data, compares it with a master list, and provides color‑coded and vibration alerts based on case proximity, using Flutter for the UI and a Python backend."
+    },
+    {
+        "keys": [
             "bye",
             "goodbye",
             "see you",
