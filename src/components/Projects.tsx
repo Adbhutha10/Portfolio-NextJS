@@ -171,7 +171,7 @@ export default function Projects() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 lg:p-12 overflow-y-auto overflow-x-hidden"
+                        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-8 lg:p-12 overflow-y-auto overflow-x-hidden"
                     >
                         {/* Dramatic Blurred Backdrop */}
                         <div 
@@ -185,32 +185,32 @@ export default function Projects() {
                             className="relative w-full max-w-5xl bg-[#121212] rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden z-10 my-auto flex flex-col max-h-[90vh]"
                         >
                             {/* Premium Header Gradient */}
-                            <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-blue-500/20 via-purple-500/10 to-transparent pointer-events-none" />
+                            <div className="absolute top-0 left-0 right-0 h-24 md:h-40 bg-gradient-to-b from-blue-500/20 via-purple-500/10 to-transparent pointer-events-none" />
 
                             {/* Close Button */}
                             <button 
                                 onClick={() => setSelectedId(null)}
-                                className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white transition-all transform hover:scale-105 z-20"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white transition-all transform hover:scale-105 z-20"
                             >
                                 <X className="w-6 h-6" />
                             </button>
 
                             {/* Scrollable Content */}
-                            <div className="p-8 md:p-12 overflow-y-auto flex-grow custom-scrollbar">
+                            <div className="p-6 md:p-12 overflow-y-auto flex-grow custom-scrollbar">
                                 
-                                <motion.div layoutId={`icon-${selectedProject.id}`} className="mb-8 inline-block p-4 bg-white/5 rounded-2xl border border-white/10 shadow-lg">
-                                    <selectedProject.icon className="w-10 h-10 text-blue-400" />
+                                <motion.div layoutId={`icon-${selectedProject.id}`} className="mb-6 md:mb-8 inline-block p-3 md:p-4 bg-white/5 rounded-2xl border border-white/10 shadow-lg">
+                                    <selectedProject.icon className="w-8 h-8 md:w-10 md:h-10 text-blue-400" />
                                 </motion.div>
 
-                                <motion.div layoutId={`category-${selectedProject.id}`} className="text-sm font-mono text-blue-400 tracking-widest uppercase mb-4">
+                                <motion.div layoutId={`category-${selectedProject.id}`} className="text-xs md:text-sm font-mono text-blue-400 tracking-widest uppercase mb-3 md:mb-4">
                                     {selectedProject.category}
                                 </motion.div>
 
-                                <motion.h3 layoutId={`title-${selectedProject.id}`} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 text-white tracking-tight">
+                                <motion.h3 layoutId={`title-${selectedProject.id}`} className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-10 text-white tracking-tight">
                                     {selectedProject.title}
                                 </motion.h3>
 
-                                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
                                     {/* Left Column: Description & Highlights */}
                                     <div className="lg:col-span-2 space-y-12">
                                         <div>

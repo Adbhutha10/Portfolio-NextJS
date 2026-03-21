@@ -17,11 +17,11 @@ export default function About() {
             {/* Parallax Background Elements */}
             <motion.div 
                 style={{ y: y1 }} 
-                className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] pointer-events-none"
+                className="absolute top-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-500/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"
             />
             <motion.div 
                 style={{ y: y2 }} 
-                className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none"
+                className="absolute bottom-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-500/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"
             />
             
             <div className="max-w-7xl mx-auto relative z-10">
