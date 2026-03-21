@@ -109,15 +109,7 @@ export default function Agent() {
 
     // Initial toast notification
     useEffect(() => {
-        toastTimerRef.current = setTimeout(() => {
-            setShowToast(true);
-            setHasUnread(true);
-            toastHideTimerRef.current = setTimeout(() => setShowToast(false), 8000);
-        }, 15000);
-        return () => {
-            if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-            if (toastHideTimerRef.current) clearTimeout(toastHideTimerRef.current);
-        };
+        // Auto-toast has been disabled
     }, []);
 
     useEffect(() => {
