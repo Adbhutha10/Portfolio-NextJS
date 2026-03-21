@@ -67,38 +67,63 @@ export default function About() {
 
                     {/* Right Column: Experience */}
                     <div className="space-y-12">
+                        {/* New Internship Experience Section */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
                             <h3 className="text-2xl font-bold mb-8 text-blue-400 flex items-center gap-3">
-                                <span className="w-8 h-1 bg-blue-500 rounded-full"></span> Experience
+                                <span className="w-8 h-1 bg-blue-500 rounded-full"></span> Internship Experience
                             </h3>
 
                             <div className="space-y-12 border-l border-white/10 pl-8 ml-4">
                                 <div className="relative group">
                                     <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-blue-500 bg-[#0a0a0a] group-hover:bg-blue-500 transition-colors duration-300" />
+                                    <h4 className="text-xl font-bold text-white">Software Product Development Intern</h4>
+                                    <p className="text-sm text-blue-300 font-mono tracking-wide mb-3 mt-1">CYME AUTOMATION SYSTEMS PVT. LTD. • FEB 2026 – APR 2026</p>
+                                    <ul className="text-gray-400 leading-relaxed list-disc list-outside ml-4 space-y-2">
+                                        <li>Developed algorithms for real-time monitoring and data acquisition applications.</li>
+                                        <li>Built database modules to store and process system data.</li>
+                                        <li>Assisted in software design, development, and testing of monitoring applications.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Renamed Roles and Responsibilities Section */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h3 className="text-2xl font-bold mb-8 text-purple-400 flex items-center gap-3">
+                                <span className="w-8 h-1 bg-purple-500 rounded-full"></span> Roles and Responsibilities
+                            </h3>
+
+                            <div className="space-y-12 border-l border-white/10 pl-8 ml-4">
+                                <div className="relative group">
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[#0a0a0a] group-hover:bg-purple-500 transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-white">Feedback and Review Manager</h4>
-                                    <p className="text-sm text-blue-300 font-mono tracking-wide mb-3 mt-1">CODING BRIGADE BVRIT • DEC 2025 - PRESENT</p>
+                                    <p className="text-sm text-purple-300 font-mono tracking-wide mb-3 mt-1">CODING BRIGADE BVRIT • DEC 2025 - PRESENT</p>
                                     <p className="text-gray-400 leading-relaxed">
                                         Managing and reviewing project submissions to ensure quality, clarity, and adherence to coding standards. Providing constructive feedback to students, helping refine their problem-solving approaches, and supporting the club in organizing coding challenges and review-based learning activities. Facilitating a collaborative environment that encourages continuous improvement and technical skill development among members.
                                     </p>
                                 </div>
 
                                 <div className="relative group">
-                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-blue-500 bg-[#0a0a0a] group-hover:bg-blue-500 transition-colors duration-300" />
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[#0a0a0a] group-hover:bg-purple-500 transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-white">Technical Co-Lead</h4>
-                                    <p className="text-sm text-blue-300 font-mono tracking-wide mb-3 mt-1">GDG ON CAMPUS • NOV 2025 - PRESENT</p>
+                                    <p className="text-sm text-purple-300 font-mono tracking-wide mb-3 mt-1">GDG ON CAMPUS • NOV 2025 - PRESENT</p>
                                     <p className="text-gray-400 leading-relaxed">
                                         Organizing workshops, hackathons, and technical sessions on web development, cloud, and AI while fostering a peer learning environment through study jams and coding meetups. Collaborating with student developers, guiding project-building activities, and connecting the community with the broader GDG network to enhance real-world technical exposure.
                                     </p>
                                 </div>
 
                                 <div className="relative group">
-                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-gray-600 bg-[#0a0a0a] group-hover:bg-gray-600 transition-colors duration-300" />
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[#0a0a0a] group-hover:bg-purple-500 transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-white">Open Source Contributor</h4>
-                                    <p className="text-sm text-gray-500 font-mono tracking-wide mb-3 mt-1">GIRLSCRIPT SUMMER OF CODE • JULY 2025 - OCT 2025</p>
+                                    <p className="text-sm text-purple-300 font-mono tracking-wide mb-3 mt-1">GIRLSCRIPT SUMMER OF CODE • JULY 2025 - OCT 2025</p>
                                     <p className="text-gray-400 leading-relaxed">
                                         Contributed to multiple open-source repositories by fixing bugs, implementing new features, and improving documentation quality. Collaborated with maintainers and contributors using Git, GitHub, and issue tracking systems. Enhanced frontend and backend components with technologies such as ReactJS, Firebase, and Node.js while gaining hands-on experience working with real-world codebases and version control workflows.
                                     </p>
