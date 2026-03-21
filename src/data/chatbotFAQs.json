@@ -12,7 +12,7 @@
             "namaskara",
             "salaam"
         ],
-        "a": "Hello 👋 Welcome to Adbhutha's portfolio! I'm her AI assistant. You can ask me about her skills, projects, or research."
+        "a": "Hello 👋 Welcome to Adbhutha's portfolio! This is her AI assistant. You can ask about her skills, projects, or research."
     },
     {
         "keys": [
@@ -23,7 +23,7 @@
             "suprabhat",
             "kaalai vanakkam"
         ],
-        "a": "Hello 😊 Hope you're having a great day! I can help you explore Adbhutha's work and achievements."
+        "a": "Hello 😊 Hope you're having a great day! This assistant can help you explore Adbhutha's work and achievements."
     },
     {
         "keys": [
@@ -34,7 +34,7 @@
             "kaise ho",
             "epdi iruka"
         ],
-        "a": "I'm doing great 😄 Thanks for asking! I'm optimized to help you learn more about Adbhutha's technical journey."
+        "a": "Everything is running smoothly! 😄 This assistant is optimized to help you learn more about Adbhutha's technical journey."
     },
     {
         "keys": [
@@ -43,7 +43,7 @@
             "em chestunnav",
             "kya chal raha hai"
         ],
-        "a": "All good here 😄 Ready to talk about Adbhutha's projects or her research at NRSC!"
+        "a": "All systems go! 😄 Ready to discuss Adbhutha's projects or her research at NRSC!"
     },
     {
         "keys": [
@@ -53,7 +53,7 @@
             "tum kaun ho",
             "neenga yaar"
         ],
-        "a": "I'm Adbhutha's Portfolio Assistant 🤖 here to guide you through her professional details."
+        "a": "This is Adbhutha's Portfolio Assistant 🤖 here to guide you through her professional details."
     },
     {
         "keys": [
@@ -62,7 +62,7 @@
             "ninnu evaru chesaru",
             "kisne banaya"
         ],
-        "a": "I was integrated into this portfolio by Adbhutha to provide an interactive experience for visitors 😊"
+        "a": "Adbhutha integrated this assistant into her portfolio to provide an interactive experience for visitors 😊"
     },
     {
         "keys": [
@@ -71,7 +71,7 @@
             "nuvvu ai aa",
             "tum robot ho"
         ],
-        "a": "I'm a smart portfolio assistant 🤖 built using Next.js and React to represent Adbhutha's work."
+        "a": "This is a smart portfolio assistant 🤖 built using Next.js and React to represent Adbhutha's work."
     },
     {
         "keys": [
@@ -80,7 +80,7 @@
             "options",
             "help me"
         ],
-        "a": "I can tell you about Adbhutha's projects (like the NRSC satellite work), her skills in ML/Web Dev, her 9.57 CGPA, or her roles at GDG and Coding Brigade."
+        "a": "This assistant can provide information about Adbhutha's projects (like the NRSC satellite work), her skills in ML/Web Dev, her 9.57 CGPA, or her roles at GDG and Coding Brigade."
     },
     {
         "keys": [
@@ -196,7 +196,7 @@
             "cbb",
             "manager"
         ],
-        "a": "As the Feedback and Review Manager at Coding Brigade, she ensured high-quality peer reviews and maintained technical standards within the club."
+        "a": "As the Feedback and Review Manager at Coding Brigade, Adbhutha ensures high-quality peer reviews and maintains technical standards within the club."
     },
     {
         "keys": [

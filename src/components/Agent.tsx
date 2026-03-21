@@ -48,17 +48,17 @@ const FAQS = [
     {
         q: "who is adbhutha",
         label: "👋 Introduction",
-        a: "I'm Adbhutha Beere, a CSE student at BVRIT specializing in Full Stack, ML, and Cloud. I'm passionate about building scalable, AI-driven solutions!"
+        a: "Adbhutha Beere is a CSE student at BVRIT specializing in Full Stack, ML, and Cloud. She's passionate about building scalable, AI-driven solutions!"
     },
     {
         q: "technical skills",
         label: "🛠️ Skills",
-        a: "My expertise covers Python, JavaScript, Java, React, Node.js, and Machine Learning (TensorFlow/PyTorch). I also work with Docker and Cloud tools."
+        a: "Adbhutha's expertise covers Python, JavaScript, Java, React, Node.js, and Machine Learning (TensorFlow/PyTorch). She also works with Docker and Cloud tools."
     },
     {
         q: "research paper",
         label: "📄 Research",
-        a: "I've published a research paper on 'Cloud Masking using resourcesat-2 images' in IEEE Xplore. It uses unsupervised classification for satellite imagery."
+        a: "Adbhutha has published a research paper on 'Cloud Masking using resourcesat-2 images' in IEEE Xplore. It presents a robust method for cloud detection using multi-spectral satellite data."
     },
     {
         q: "major projects",
@@ -140,17 +140,24 @@ export default function Agent() {
         const query = normalize(text);
 
         // Extended stop words for cleaner keyword matching
-        const stopWords = new Set(['what', 'is', 'the', 'her', 'she', 'does', 'did', 'do', 'can', 'you', 'tell', 'me', 'about', 'how', 'much', 'many', 'of', 'for', 'in', 'on', 'with', 'a', 'an']);
+        const stopWords = new Set(['what', 'is', 'the', 'her', 'she', 'does', 'did', 'do', 'can', 'you', 'tell', 'me', 'about', 'how', 'much', 'many', 'of', 'for', 'in', 'on', 'with', 'a', 'an', 'who', 'how', 'why', 'where', 'when', 'im', 'give', 'tell', 'me', 'only', 'has', 'have']);
         const queryKeywords = query.split(' ').filter(word => !stopWords.has(word));
 
         // 1. Check priority FAQS defined above (UI Buttons)
         for (let faq of FAQS) {
-            if (query.includes(normalize(faq.q))) return faq.a;
+            const faqNorm = normalize(faq.q);
+            if (query === faqNorm) return faq.a;
+        }
+
+        // If the query is long (conversational), let the AI handle it
+        if (query.split(' ').length > 6) {
+            return null;
         }
 
         // 2. Check comprehensive list with scoring
         let bestMatch = null;
         let bestScore = 0;
+
 
         for (let item of FAQS2) {
             let score = 0;
@@ -158,8 +165,9 @@ export default function Agent() {
                 const keyNorm = normalize(key);
                 const keyWords = keyNorm.split(' ').filter(word => !stopWords.has(word));
 
-                // Exact phrase match (High Priority)
-                if (query.includes(keyNorm)) score += 100;
+                // Exact phrase match (High Priority) - Use word boundaries to avoid false positives (e.g. 'hi' in 'machine')
+                const isExactMatch = new RegExp(`\\b${keyNorm}\\b`, 'i').test(query);
+                if (isExactMatch) score += 100;
 
                 // Keyword intersections
                 keyWords.forEach(kWord => {
@@ -183,7 +191,8 @@ export default function Agent() {
         }
 
         // Threshold for a confident match
-        return bestScore >= 30 ? bestMatch : null;
+        // Higher threshold for local matches (requires at least 2 strong keyword matches or an exact phrase)
+        return bestScore >= 60 ? bestMatch : null;
     };
 
     const handleSend = async (content = input) => {
@@ -212,20 +221,31 @@ export default function Agent() {
                     setIsLoading(false);
                 }, 600);
             } else {
-                // Static fallback since Gemini is removed
-                setTimeout(() => {
-                    setMessages(prev => [...prev, {
-                        role: 'assistant' as const,
-                        content: "I'm sorry, I don't have a specific answer for that. You can ask me about Adbhutha's projects, skills, or research, or contact her directly!",
-                        timestamp: new Date().toISOString()
-                    }]);
-                    setIsLoading(false);
-                }, 600);
+                // Call Gemini API as fallback
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: [...messages, userMsg] })
+                });
+
+                if (!response.ok) throw new Error("API call failed");
+
+                const data = await response.json();
+                
+                if (data.error) throw new Error(data.error);
+
+                setMessages(prev => [...prev, {
+                    role: 'assistant' as const,
+                    content: data.content,
+                    timestamp: new Date().toISOString()
+                }]);
+                setIsLoading(false);
             }
         } catch (error) {
+            console.error("Chat Error:", error);
             setMessages(prev => [...prev, {
                 role: 'assistant' as const,
-                content: "Hmm, I'm having a bit of trouble thinking right now. Try checking the sections below!",
+                content: "Hmm, I'm having a bit of trouble connecting to my AI brain. Try checking the sections below or ensure the API key is set!",
                 timestamp: new Date().toISOString(),
                 isError: true
             }]);
