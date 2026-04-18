@@ -9,8 +9,10 @@ type Theme = 'default' | 'cyberpunk' | 'mono';
 export default function ThemeSwitcher() {
     const [theme, setTheme] = useState<Theme>('default');
     const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const savedTheme = localStorage.getItem('portfolio-theme') as Theme;
         if (savedTheme) {
             setTheme(savedTheme);
@@ -31,10 +33,13 @@ export default function ThemeSwitcher() {
         { id: 'mono', label: 'Minimalist', icon: Palette, color: 'bg-white' },
     ];
 
+    if (!mounted) return null;
+
     return (
         <div className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
+                suppressHydrationWarning
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-gray-300 hover:text-white group"
             >
                 <Sparkles className="w-4 h-4 text-[var(--accent-primary)] group-hover:rotate-12 transition-transform" />
