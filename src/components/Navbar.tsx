@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
-import ThemeSwitcher from './ThemeSwitcher';
+
+const ThemeSwitcher = dynamic(() => import('./ThemeSwitcher'), { ssr: false });
 
 const navLinks = [
     { name: 'Home', href: '#home' },
