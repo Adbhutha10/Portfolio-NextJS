@@ -13,15 +13,15 @@ export default function About() {
     const y2 = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
 
     return (
-        <section ref={sectionRef} className="relative py-24 px-6 md:px-12 lg:px-24 bg-[#0a0a0a] text-white border-t border-white/5 overflow-hidden">
+        <section ref={sectionRef} className="relative py-24 px-6 md:px-12 lg:px-24 bg-[var(--bg-primary)] text-white border-t border-[var(--border-primary)] overflow-hidden transition-colors duration-500">
             {/* Parallax Background Elements */}
             <motion.div 
                 style={{ y: y1 }} 
-                className="absolute top-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-500/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"
+                className="absolute top-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[var(--accent-primary)]/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"
             />
             <motion.div 
                 style={{ y: y2 }} 
-                className="absolute bottom-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-500/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"
+                className="absolute bottom-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[var(--accent-secondary)]/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"
             />
             
             <div className="max-w-7xl mx-auto relative z-10">
@@ -37,10 +37,10 @@ export default function About() {
                             viewport={{ once: true }}
                         >
                             <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
-                                <span className="w-12 h-1 bg-purple-500 rounded-full"></span> About Me
+                                <span className="w-12 h-1 bg-[var(--accent-secondary)] rounded-full"></span> About Me
                             </h2>
-                            <div className="bg-white/5 p-8 md:p-10 rounded-2xl border border-white/5 backdrop-blur-sm relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity group-hover:opacity-75" />
+                            <div className="bg-[var(--bg-secondary)] p-8 md:p-10 rounded-2xl border border-[var(--border-primary)] backdrop-blur-sm relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity group-hover:opacity-75" />
                                 <p className="text-gray-300 text-lg leading-relaxed relative z-10 w-full">
                                     I aspire to build a strong career in Computer Science with a focus on full-stack development, machine learning, and cloud technologies. I aim to work on cutting-edge projects, develop scalable solutions, and actively contribute to developer communities through initiatives like GDG on Campus and Coding Brigade. By engaging in interdisciplinary, impact-driven work, I seek to strengthen my analytical and problem-solving abilities and prepare for roles in research-oriented product development within the industry.
                                 </p>
@@ -52,8 +52,8 @@ export default function About() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-2xl font-bold mb-8 text-blue-400 flex items-center gap-3">
-                                <span className="w-8 h-1 bg-blue-500 rounded-full"></span> Technical Skills
+                            <h3 className="text-2xl font-bold mb-8 text-[var(--accent-primary)] flex items-center gap-3">
+                                <span className="w-8 h-1 bg-[var(--accent-primary)] rounded-full"></span> Technical Skills
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {[
@@ -100,7 +100,7 @@ export default function About() {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.1 }}
-                                        className={`bg-white/5 p-6 rounded-2xl border border-white/5 ${cat.styles.card} hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 group flex flex-col`}
+                                        className={`bg-[var(--bg-secondary)] p-6 rounded-2xl border border-[var(--border-primary)] ${cat.styles.card} hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 group flex flex-col`}
                                     >
                                         <h4 className="font-bold text-white mb-4 text-lg flex items-center gap-2">
                                             <span className={`w-2.5 h-2.5 ${cat.accent} rounded-full group-hover:scale-150 transition-transform duration-500`} />
@@ -133,15 +133,15 @@ export default function About() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-2xl font-bold mb-8 text-blue-400 flex items-center gap-3">
-                                <span className="w-8 h-1 bg-blue-500 rounded-full"></span> Internship Experience
+                            <h3 className="text-2xl font-bold mb-8 text-[var(--accent-primary)] flex items-center gap-3">
+                                <span className="w-8 h-1 bg-[var(--accent-primary)] rounded-full"></span> Internship Experience
                             </h3>
 
                             <div className="space-y-12 border-l border-white/10 pl-8 ml-4">
                                 <div className="relative group">
-                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-blue-500 bg-[#0a0a0a] group-hover:bg-blue-500 transition-colors duration-300" />
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--bg-primary)] group-hover:bg-[var(--accent-primary)] transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-white">Software Product Development Intern</h4>
-                                    <p className="text-sm text-blue-300 font-mono tracking-wide mb-3 mt-1">CYME AUTOMATION SYSTEMS PVT. LTD. • FEB 2026 – APR 2026</p>
+                                    <p className="text-sm text-[var(--accent-primary)] font-mono tracking-wide mb-3 mt-1">CYME AUTOMATION SYSTEMS PVT. LTD. • FEB 2026 – APR 2026</p>
                                     <ul className="text-gray-400 leading-relaxed list-disc list-outside ml-4 space-y-2">
                                         <li>Developed algorithms for real-time monitoring and data acquisition applications.</li>
                                         <li>Built database modules to store and process system data.</li>
@@ -157,15 +157,15 @@ export default function About() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-2xl font-bold mb-8 text-purple-400 flex items-center gap-3">
-                                <span className="w-8 h-1 bg-purple-500 rounded-full"></span> Roles and Responsibilities
+                            <h3 className="text-2xl font-bold mb-8 text-[var(--accent-secondary)] flex items-center gap-3">
+                                <span className="w-8 h-1 bg-[var(--accent-secondary)] rounded-full"></span> Roles and Responsibilities
                             </h3>
 
                             <div className="space-y-12 border-l border-white/10 pl-8 ml-4">
                                 <div className="relative group">
-                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[#0a0a0a] group-hover:bg-purple-500 transition-colors duration-300" />
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-[var(--accent-secondary)] bg-[var(--bg-primary)] group-hover:bg-[var(--accent-secondary)] transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-white">Feedback and Review Manager</h4>
-                                    <p className="text-sm text-purple-300 font-mono tracking-wide mb-3 mt-1">CODING BRIGADE BVRIT • DEC 2025 - PRESENT</p>
+                                    <p className="text-sm text-[var(--accent-secondary)] font-mono tracking-wide mb-3 mt-1">CODING BRIGADE BVRIT • DEC 2025 - PRESENT</p>
                                     <p className="text-gray-400 leading-relaxed">
                                         Managing and reviewing project submissions to ensure quality, clarity, and adherence to coding standards. Providing constructive feedback to students, helping refine their problem-solving approaches, and supporting the club in organizing coding challenges and review-based learning activities. Facilitating a collaborative environment that encourages continuous improvement and technical skill development among members.
                                     </p>

@@ -9,8 +9,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Adbhutha Beere | Creative Developer",
-  description: "Portfolio of a Computer Science driven student focused on Full Stack, ML, and Cloud.",
+  metadataBase: new URL("https://adbhutha.me"),
+  title: "Adbhutha Beere | Full Stack, ML & Cloud Engineer",
+  description: "Portfolio of Adbhutha Beere, focusing on scalable AI-driven solutions, full-stack development, and cloud computing. semi-finalist in Flipkart GRID 7.0 and IEEE Published researcher.",
+  keywords: ["Adbhutha Beere", "Portfolio", "Full Stack Developer", "Machine Learning Engineer", "Cloud Computing", "BVRIT", "IEEE Researcher"],
+  authors: [{ name: "Adbhutha Beere" }],
+  openGraph: {
+    title: "Adbhutha Beere | Portfolio",
+    description: "Building scalable AI solutions and full-stack applications.",
+    url: "https://sravyachowdery.me",
+    siteName: "Adbhutha Beere Portfolio",
+    images: [
+      {
+        url: "/hero.webp",
+        width: 1200,
+        height: 630,
+        alt: "Adbhutha Beere Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adbhutha Beere | Portfolio",
+    description: "Full Stack, ML & Cloud Engineer Portfolio",
+    images: ["/hero.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
 
         {children}

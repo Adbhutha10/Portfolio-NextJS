@@ -103,7 +103,7 @@ export default function Projects() {
     const selectedProject = projects.find(p => p.id === selectedId);
 
     return (
-        <section className="relative min-h-screen py-24 px-6 md:px-12 lg:px-24 bg-[#121212] text-white">
+        <section className="relative min-h-screen py-24 px-6 md:px-12 lg:px-24 bg-[var(--bg-primary)] text-white transition-colors duration-500">
             <div className="max-w-7xl mx-auto">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -128,21 +128,21 @@ export default function Projects() {
                                 <motion.div
                                     layoutId={`card-${project.id}`}
                                     onClick={() => setSelectedId(project.id)}
-                                    className="group relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden hover:bg-white/10 transition-colors duration-500 min-h-[320px] flex flex-col justify-between cursor-pointer w-full h-full"
+                                    className="group relative p-8 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-secondary)] backdrop-blur-md overflow-hidden hover:bg-white/10 transition-colors duration-500 min-h-[320px] flex flex-col justify-between cursor-pointer w-full h-full"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                                     {/* Project Icon/Logo */}
-                                    <motion.div layoutId={`icon-${project.id}`} className="absolute top-6 right-6 p-3 bg-white/5 rounded-xl border border-white/10 group-hover:bg-blue-500/10 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-black/20">
+                                    <motion.div layoutId={`icon-${project.id}`} className="absolute top-6 right-6 p-3 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-primary)] group-hover:bg-[var(--accent-primary)]/10 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-black/20">
                                         <project.icon className="w-8 h-8 text-blue-400/80 group-hover:text-blue-400 transition-colors" />
                                     </motion.div>
 
                                     <div className="relative z-10 flex flex-col h-full pointer-events-none">
                                         <div className="space-y-4">
-                                            <motion.div layoutId={`category-${project.id}`} className="text-sm font-mono text-blue-400 tracking-widest uppercase">
+                                            <motion.div layoutId={`category-${project.id}`} className="text-sm font-mono text-[var(--accent-primary)] tracking-widest uppercase">
                                                 {project.category}
                                             </motion.div>
-                                            <motion.h3 layoutId={`title-${project.id}`} className="text-3xl font-bold group-hover:text-blue-300 transition-colors pr-12">
+                                            <motion.h3 layoutId={`title-${project.id}`} className="text-3xl font-bold group-hover:text-[var(--accent-primary)] transition-colors pr-12">
                                                 {project.title}
                                             </motion.h3>
                                             <motion.p layoutId={`desc-${project.id}`} className="text-gray-300 leading-relaxed text-lg line-clamp-3">
@@ -151,7 +151,7 @@ export default function Projects() {
                                         </div>
 
                                         <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between pointer-events-none">
-                                            <span className="text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors flex items-center gap-2">
+                                            <span className="text-sm font-medium text-[var(--accent-primary)] group-hover:text-[var(--accent-primary)] transition-colors flex items-center gap-2">
                                                 View Case Study
                                                 <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                                             </span>
@@ -182,10 +182,10 @@ export default function Projects() {
                         {/* Expanding Modal Card */}
                         <motion.div
                             layoutId={`card-${selectedProject.id}`}
-                            className="relative w-full max-w-5xl bg-[#121212] rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden z-10 my-auto flex flex-col max-h-[90vh]"
+                            className="relative w-full max-w-5xl bg-[var(--bg-primary)] rounded-3xl border border-[var(--border-primary)] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden z-10 my-auto flex flex-col max-h-[90vh]"
                         >
                             {/* Premium Header Gradient */}
-                            <div className="absolute top-0 left-0 right-0 h-24 md:h-40 bg-gradient-to-b from-blue-500/20 via-purple-500/10 to-transparent pointer-events-none" />
+                            <div className="absolute top-0 left-0 right-0 h-24 md:h-40 bg-gradient-to-b from-[var(--accent-primary)]/20 via-[var(--accent-secondary)]/10 to-transparent pointer-events-none" />
 
                             {/* Close Button */}
                             <button 
@@ -263,7 +263,7 @@ export default function Projects() {
                                                 href={selectedProject.link} 
                                                 target="_blank" 
                                                 rel="noopener noreferrer" 
-                                                className="w-full py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] transform hover:-translate-y-1"
+                                                className="w-full py-4 bg-[var(--accent-primary)] hover:opacity-90 text-[var(--text-on-accent)] rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_20px_var(--accent-primary)]/20 hover:shadow-[0_0_30px_var(--accent-primary)]/40 transform hover:-translate-y-1"
                                             >
                                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                                 Live View / Repository

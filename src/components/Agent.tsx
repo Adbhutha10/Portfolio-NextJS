@@ -8,6 +8,7 @@ import {
     PaperAirplaneIcon,
     UserIcon,
     CommandLineIcon,
+    ClockIcon,
     ArrowPathIcon,
     SparklesIcon
 } from '@heroicons/react/24/outline';
@@ -47,27 +48,27 @@ const ChatLogo = ({ className = "w-8 h-8" }: { className?: string }) => (
 const FAQS = [
     {
         q: "who is adbhutha",
-        label: "👋 Introduction",
+        label: "Introduction",
         a: "Adbhutha Beere is a CSE student at BVRIT specializing in Full Stack, ML, and Cloud. She's passionate about building scalable, AI-driven solutions!"
     },
     {
         q: "technical skills",
-        label: "🛠️ Skills",
+        label: "Skills",
         a: "Adbhutha's expertise covers Python, JavaScript, Java, React, Node.js, and Machine Learning (TensorFlow/PyTorch). She also works with Docker and Cloud tools."
     },
     {
         q: "research paper",
-        label: "📄 Research",
+        label: "Research",
         a: "Adbhutha has published a research paper on 'Cloud Masking using resourcesat-2 images' in IEEE Xplore. It presents a robust method for cloud detection using multi-spectral satellite data."
     },
     {
         q: "major projects",
-        label: "📂 Projects",
+        label: "Projects",
         a: "Key projects include 'BVRIT Alumni-Student Connect', 'NRSC Cloud Masking', and an 'ML Crop Price Prediction' model."
     },
     {
         q: "contact",
-        label: "📩 Let's Connect",
+        label: "Let's Connect",
         a: "You can find my contact details below or reach out via LinkedIn. I'm always open to talking about tech and opportunities!"
     }
 ];
@@ -85,18 +86,43 @@ interface Message {
     content: string;
     timestamp: string;
     isError?: boolean;
+    isNew?: boolean;
 }
+
+// Typing effect for assistant responses
+const TypedMessage = ({ content, onComplete }: { content: string, onComplete?: () => void }) => {
+    const [displayedContent, setDisplayedContent] = useState('');
+    const [isTyping, setIsTyping] = useState(true);
+
+    useEffect(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < content.length) {
+                setDisplayedContent(prev => prev + content.charAt(i));
+                i++;
+            } else {
+                clearInterval(interval);
+                setIsTyping(false);
+                onComplete?.();
+            }
+        }, 15); // Speed of typing
+
+        return () => clearInterval(interval);
+    }, [content]);
+
+    return (
+        <div className="relative">
+            {displayedContent}
+            {isTyping && <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ repeat: Infinity, duration: 0.8 }} className="inline-block w-1 h-4 bg-blue-500 ml-1 align-middle" />}
+        </div>
+    );
+};
 
 export default function Agent() {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            role: 'assistant',
-
-            content: "Welcome! I'm Adbhutha's Portfolio Copilot. How can I assist you today?",
-            timestamp: new Date().toISOString()
-        }
-    ]);
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [recentQueries, setRecentQueries] = useState<string[]>([]);
+    const [showRecent, setShowRecent] = useState(false);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [mode, setMode] = useState<'recruiter' | 'tech'>('recruiter');
@@ -107,10 +133,69 @@ export default function Agent() {
     const toastTimerRef = useRef<NodeJS.Timeout | null>(null);
     const toastHideTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-    // Initial toast notification
+    // Initial Load & Expiry Logic
     useEffect(() => {
-        // Auto-toast has been disabled
+        const savedHistory = localStorage.getItem('portfolio_chat_history');
+        const lastActive = localStorage.getItem('portfolio_chat_last_active');
+        const savedRecent = localStorage.getItem('portfolio_chat_recent_queries');
+
+        const initialAssistantMsg: Message = {
+            role: 'assistant',
+            content: "Welcome back! I'm Adbhutha's Portfolio Copilot. How can I assist you today?",
+            timestamp: new Date().toISOString(),
+            isNew: true
+        };
+
+        if (lastActive) {
+            const lastActiveTime = new Date(lastActive).getTime();
+            const now = new Date().getTime();
+            const hoursSinceActive = (now - lastActiveTime) / (1000 * 60 * 60);
+
+            if (hoursSinceActive > 24) {
+                // Expire history
+                localStorage.removeItem('portfolio_chat_history');
+                localStorage.removeItem('portfolio_chat_last_active');
+                localStorage.removeItem('portfolio_chat_recent_queries');
+                setMessages([initialAssistantMsg]);
+            } else if (savedHistory) {
+                setMessages(JSON.parse(savedHistory));
+            }
+        } else {
+            setMessages([{
+                role: 'assistant',
+                content: "Welcome! I'm Adbhutha's Portfolio Copilot. How can I assist you today?",
+                timestamp: new Date().toISOString(),
+                isNew: true
+            }]);
+        }
+
+        if (savedRecent) {
+            setRecentQueries(JSON.parse(savedRecent));
+        }
     }, []);
+
+    // Persist History & Update Active Timestamp
+    useEffect(() => {
+        if (messages.length > 0) {
+            localStorage.setItem('portfolio_chat_history', JSON.stringify(messages));
+            localStorage.setItem('portfolio_chat_last_active', new Date().toISOString());
+        }
+    }, [messages]);
+
+    // Update Recent Queries (User questions only)
+    useEffect(() => {
+        const userQueries = messages
+            .filter(m => m.role === 'user')
+            .map(m => m.content.trim())
+            .filter((val, index, self) => self.indexOf(val) === index) // Unique
+            .slice(-5) // Last 5
+            .reverse();
+        
+        if (userQueries.length > 0) {
+            setRecentQueries(userQueries);
+            localStorage.setItem('portfolio_chat_recent_queries', JSON.stringify(userQueries));
+        }
+    }, [messages]);
 
     useEffect(() => {
         if (isOpen) {
@@ -205,13 +290,14 @@ export default function Agent() {
             if (localAnswer) {
                 // Quick simulated response for local matches
                 setTimeout(() => {
-                    setMessages(prev => [...prev, {
-                        role: 'assistant' as const,
-                        content: localAnswer,
-                        timestamp: new Date().toISOString()
-                    }]);
-                    setIsLoading(false);
-                }, 600);
+                        setMessages(prev => [...prev, {
+                            role: 'assistant' as const,
+                            content: localAnswer,
+                            timestamp: new Date().toISOString(),
+                            isNew: true
+                        }]);
+                        setIsLoading(false);
+                    }, 600);
             } else {
                 // Call Gemini API as fallback
                 const response = await fetch('/api/chat', {
@@ -229,7 +315,8 @@ export default function Agent() {
                 setMessages(prev => [...prev, {
                     role: 'assistant' as const,
                     content: data.content,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    isNew: true
                 }]);
                 setIsLoading(false);
             }
@@ -239,18 +326,24 @@ export default function Agent() {
                 role: 'assistant' as const,
                 content: "Hmm, I'm having a bit of trouble connecting to my AI brain. Try checking the sections below or ensure the API key is set!",
                 timestamp: new Date().toISOString(),
-                isError: true
+                isError: true,
+                isNew: true
             }]);
             setIsLoading(false);
         }
     };
 
     const reset = () => {
+        localStorage.removeItem('portfolio_chat_history');
+        localStorage.removeItem('portfolio_chat_last_active');
+        localStorage.removeItem('portfolio_chat_recent_queries');
         setMessages([{
             role: 'assistant',
             content: "Session reset. Ask me about Adbhutha's projects, skills, or research!",
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            isNew: true
         }]);
+        setRecentQueries([]);
     };
 
     return (
@@ -264,13 +357,13 @@ export default function Agent() {
                         exit={{ opacity: 0, x: 20, scale: 0.8 }}
                         className="absolute bottom-20 right-0 w-72"
                     >
-                        <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl relative">
+                        <div className="bg-[var(--bg-primary)]/80 backdrop-blur-xl border border-[var(--border-primary)] p-4 rounded-2xl shadow-2xl relative">
                             <button onClick={() => setShowToast(false)} className="absolute top-2 right-2 text-white/40 hover:text-white">
                                 <XMarkIcon className="w-4 h-4" />
                             </button>
                             <div className="flex gap-3">
-                                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
-                                    <SparklesIcon className="w-5 h-5 text-blue-400" />
+                                <div className="w-8 h-8 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center shrink-0">
+                                    <SparklesIcon className="w-5 h-5 text-[var(--accent-primary)]" />
                                 </div>
                                 <p className="text-xs text-blue-100/90 leading-relaxed">
                                     <span className="font-bold text-white uppercase tracking-wider text-[10px] block mb-1">Copilot Active</span>
@@ -288,9 +381,10 @@ export default function Agent() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsOpen(true)}
-                    className="absolute bottom-0 right-0 w-16 h-16 rounded-3xl bg-[#0c0c0c]/90 backdrop-blur-2xl border border-white/10 text-white flex items-center justify-center shadow-[0_20px_40px_rgba(0,0,0,0.4)] relative group overflow-hidden"
+                    suppressHydrationWarning
+                    className="absolute bottom-0 right-0 w-16 h-16 rounded-3xl bg-[var(--bg-primary)]/90 backdrop-blur-2xl border border-[var(--border-primary)] text-white flex items-center justify-center shadow-[0_20px_40px_rgba(0,0,0,0.4)] relative group overflow-hidden"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <ChatLogo className="w-9 h-9 z-10" />
                     {hasUnread && (
                         <span className="absolute -top-1 -right-1 flex h-4 w-4 z-20">
@@ -308,7 +402,7 @@ export default function Agent() {
                         initial={{ opacity: 0, y: 100, scale: 0.9, originY: 1 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 50, scale: 0.95 }}
-                        className="absolute bottom-0 right-0 mb-4 w-[90vw] md:w-[400px] bg-[#0c0c0c]/90 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.6)] flex flex-col h-[650px] max-h-[80vh]"
+                        className="absolute bottom-0 right-0 mb-4 w-[90vw] md:w-[400px] bg-[var(--bg-primary)]/90 backdrop-blur-3xl border border-[var(--border-primary)] rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.6)] flex flex-col h-[650px] max-h-[80vh]"
                     >
                         {/* Premium Header */}
                         <div className="px-6 py-5 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
@@ -323,10 +417,48 @@ export default function Agent() {
                                 </div>
                             </div>
                             <div className="flex gap-2">
-                                <button onClick={reset} className="text-gray-500 hover:text-white p-2 rounded-xl transition-all hover:bg-white/5" title="Reset Chat">
+                                {recentQueries.length > 0 && (
+                                    <div className="relative">
+                                        <button 
+                                            onClick={() => setShowRecent(!showRecent)} 
+                                            suppressHydrationWarning
+                                            className={`p-2 rounded-xl transition-all ${showRecent ? 'bg-[var(--accent-primary)] text-white shadow-lg' : 'text-gray-500 hover:text-white hover:bg-white/5'}`} 
+                                            title="Recently Asked"
+                                        >
+                                            <ClockIcon className="w-5 h-5" />
+                                        </button>
+                                        
+                                        <AnimatePresence>
+                                            {showRecent && (
+                                                <motion.div 
+                                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                    exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                                                    className="absolute top-12 right-0 w-64 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-2xl shadow-2xl p-4 z-50 backdrop-blur-xl"
+                                                >
+                                                    <div className="flex flex-col gap-3">
+                                                        <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest px-1">Recently Asked</span>
+                                                        <div className="flex flex-col gap-1.5">
+                                                            {recentQueries.map((q, i) => (
+                                                                <button 
+                                                                    key={i} 
+                                                                    onClick={() => { handleSend(q); setShowRecent(false); }} 
+                                                                    className="text-left px-3 py-2 rounded-lg text-xs text-gray-400 hover:bg-[var(--accent-primary)]/10 hover:text-[var(--accent-primary)] transition-all truncate border border-transparent hover:border-[var(--accent-primary)]/20"
+                                                                >
+                                                                    {q}
+                                                                </button>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                )}
+                                <button onClick={reset} suppressHydrationWarning className="text-gray-500 hover:text-white p-2 rounded-xl transition-all hover:bg-white/5" title="Reset Chat">
                                     <ArrowPathIcon className="w-5 h-5" />
                                 </button>
-                                <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-white p-2 rounded-xl transition-all hover:bg-white/5">
+                                <button onClick={() => setIsOpen(false)} suppressHydrationWarning className="text-gray-500 hover:text-white p-2 rounded-xl transition-all hover:bg-white/5">
                                     <XMarkIcon className="w-5 h-5" />
                                 </button>
                             </div>
@@ -335,10 +467,10 @@ export default function Agent() {
                         {/* Persona Toggle */}
                         <div className="px-6 py-3 border-b border-white/5 flex items-center justify-between bg-black/40">
                             <div className="flex bg-white/5 p-1 rounded-xl">
-                                <button onClick={() => setMode('recruiter')} className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center gap-2 ${mode === 'recruiter' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-400 hover:text-gray-200'}`}>
+                                <button onClick={() => setMode('recruiter')} className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center gap-2 ${mode === 'recruiter' ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] shadow-lg' : 'text-gray-400 hover:text-gray-200'}`}>
                                     <UserIcon className="w-3.5 h-3.5" /> RECRUITER
                                 </button>
-                                <button onClick={() => setMode('tech')} className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center gap-2 ${mode === 'tech' ? 'bg-purple-600 text-white shadow-lg' : 'text-gray-400 hover:text-gray-200'}`}>
+                                <button onClick={() => setMode('tech')} className={`px-4 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center gap-2 ${mode === 'tech' ? 'bg-[var(--accent-secondary)] text-[var(--text-on-accent)] shadow-lg' : 'text-gray-400 hover:text-gray-200'}`}>
                                     <CommandLineIcon className="w-3.5 h-3.5" /> TECH
                                 </button>
                             </div>
@@ -349,11 +481,21 @@ export default function Agent() {
                         </div>
 
                         {/* Messages Container */}
-                        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 scrollbar-none">
+                        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 scrollbar-none no-scrollbar">
                             {messages.map((m, i) => (
                                 <div key={i} className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
-                                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} className={`max-w-[85%] px-5 py-3 rounded-3xl text-sm leading-relaxed ${m.role === 'user' ? 'bg-blue-600 text-white rounded-tr-none shadow-xl' : m.isError ? 'bg-red-500/10 border border-red-500/20 text-red-300' : 'bg-white/5 border border-white/10 text-gray-200 rounded-tl-none shadow-sm'}`}>
-                                        {m.content}
+                                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} className={`max-w-[85%] px-5 py-3 rounded-3xl text-sm leading-relaxed ${m.role === 'user' ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] rounded-tr-none shadow-xl' : m.isError ? 'bg-red-500/10 border border-red-500/20 text-red-300' : 'bg-white/5 border border-white/10 text-gray-200 rounded-tl-none shadow-sm'}`}>
+                                        {m.role === 'assistant' && m.isNew ? (
+                                            <TypedMessage 
+                                                content={m.content} 
+                                                onComplete={() => {
+                                                    // Remove "isNew" flag after typing finishes to prevent re-typing on scroll/re-render
+                                                    setMessages(prev => prev.map((msg, idx) => idx === i ? { ...msg, isNew: false } : msg));
+                                                }} 
+                                            />
+                                        ) : (
+                                            m.content
+                                        )}
                                     </motion.div>
                                     <span className="text-[9px] font-black text-gray-600 mt-2 tracking-widest uppercase">{new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                                 </div>
@@ -361,7 +503,7 @@ export default function Agent() {
                             {isLoading && (
                                 <div className="flex justify-start">
                                     <div className="bg-white/5 border border-white/10 px-5 py-3 rounded-3xl rounded-tl-none flex gap-1.5 items-center">
-                                        {[0, 0.2, 0.4].map(d => <motion.div key={d} animate={{ opacity: [1, 0.3, 1], scale: [1, 0.8, 1] }} transition={{ repeat: Infinity, duration: 1.2, delay: d }} className="w-1.5 h-1.5 rounded-full bg-blue-500" />)}
+                                        {[0, 0.2, 0.4].map(d => <motion.div key={d} animate={{ opacity: [1, 0.3, 1], scale: [1, 0.8, 1] }} transition={{ repeat: Infinity, duration: 1.2, delay: d }} className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]" />)}
                                     </div>
                                 </div>
                             )}
@@ -369,12 +511,14 @@ export default function Agent() {
                         </div>
 
                         {/* Dynamic FAQ Chips */}
-                        <div className="px-6 py-3 border-t border-white/5 bg-black/40 flex gap-2 overflow-x-auto scrollbar-none no-scrollbar">
-                            {FAQS.map((f, i) => (
-                                <button key={i} onClick={() => handleSend(f.q)} className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-gray-400 whitespace-nowrap hover:bg-blue-600/10 hover:border-blue-500/30 hover:text-blue-400 transition-all">
-                                    {f.label}
-                                </button>
-                            ))}
+                        <div className="flex flex-col border-t border-white/5 bg-black/40">
+                            <div className="px-6 py-3 flex gap-2 overflow-x-auto no-scrollbar scrollbar-none">
+                                {FAQS.map((f, i) => (
+                                    <button key={i} onClick={() => handleSend(f.q)} className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[11px] font-medium text-gray-400 whitespace-nowrap hover:bg-white/10 hover:border-white/20 hover:text-white transition-all">
+                                        {f.label}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Input System */}
@@ -384,12 +528,12 @@ export default function Agent() {
                                     value={input}
                                     onChange={e => setInput(e.target.value)}
                                     placeholder={mode === 'recruiter' ? "Ask about experience or resume..." : "Ask about stack or research..."}
-                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-5 pr-14 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all shadow-inner"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-5 pr-14 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[var(--accent-primary)]/50 focus:ring-1 focus:ring-[var(--accent-primary)]/20 transition-all shadow-inner"
                                 />
                                 <button
                                     type="submit"
                                     disabled={!input.trim() || isLoading}
-                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-600/30 hover:bg-blue-500 disabled:opacity-30 disabled:shadow-none transition-all"
+                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-[var(--accent-primary)] text-[var(--text-on-accent)] rounded-xl shadow-lg shadow-[var(--accent-primary)]/30 hover:opacity-90 disabled:opacity-30 disabled:shadow-none transition-all"
                                 >
                                     <PaperAirplaneIcon className="w-6 h-6" />
                                 </button>

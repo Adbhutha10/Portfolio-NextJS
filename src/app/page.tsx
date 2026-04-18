@@ -11,6 +11,7 @@ import Research from '@/components/Research';
 import Contact from '@/components/Contact';
 import Navbar from '@/components/Navbar';
 import Agent from '@/components/Agent';
+import GithubShowcase from '@/components/GithubShowcase';
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,7 @@ export default function Home() {
   });
 
   return (
-    <main className="bg-[#121212] flex flex-col w-full">
+    <main className="bg-[var(--bg-primary)] flex flex-col w-full transition-colors duration-500">
       <Navbar />
 
       {/* Scroll Container */}
@@ -49,10 +50,11 @@ export default function Home() {
         <About />
       </div>
 
-      {/* Projects Section */}
       <div id="projects">
         <Projects />
       </div>
+
+      <GithubShowcase />
 
       {/* Research Section */}
       <Research />

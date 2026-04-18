@@ -48,7 +48,7 @@ const achievements = [
 
 export default function Achievements() {
     return (
-        <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#0F0F0F] text-white">
+        <section id="achievements" className="py-24 px-6 md:px-12 lg:px-24 bg-[var(--bg-primary)] transition-colors duration-500">
             <div className="max-w-5xl mx-auto flex flex-col gap-24">
 
                 {/* Certifications */}
@@ -57,9 +57,9 @@ export default function Achievements() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl font-bold mb-8 flex items-center gap-3"
+                        className="text-3xl font-bold mb-8 flex items-center gap-3 text-[var(--text-primary)]"
                     >
-                        <span className="w-2 h-8 bg-blue-500 rounded-full" /> Certifications
+                        <span className="w-2 h-8 bg-[var(--accent-primary)] rounded-full" /> Certifications
                     </motion.h2>
 
                     <div className="space-y-6">
@@ -73,16 +73,16 @@ export default function Achievements() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 viewport={{ once: true }}
-                                className="flex justify-between items-center border-b border-white/10 pb-4 group hover:pl-4 transition-all duration-300 cursor-pointer"
+                                className="flex justify-between items-center border-b border-[var(--border-primary)] pb-4 group hover:pl-4 transition-all duration-300 cursor-pointer"
                             >
                                 <div>
-                                    <h4 className="font-medium group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                                    <h4 className="font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors flex items-center gap-2">
                                         {cert.name}
-                                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" />
+                                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--accent-primary)]" />
                                     </h4>
-                                    <p className="text-sm text-gray-500">{cert.issuer}</p>
+                                    <p className="text-sm text-[var(--text-secondary)]">{cert.issuer}</p>
                                 </div>
-                                <span className="text-xs font-mono text-gray-600 group-hover:text-white transition-colors">{cert.year}</span>
+                                <span className="inline-flex items-center gap-2 text-sm font-mono text-[var(--accent-primary)] hover:text-[var(--text-primary)] transition-colors group">{cert.year}</span>
                             </motion.a>
                         ))}
                     </div>
@@ -94,31 +94,31 @@ export default function Achievements() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl font-bold mb-8 flex items-center gap-3"
+                        className="text-3xl font-bold mb-8 flex items-center gap-3 text-[var(--text-primary)]"
                     >
-                        <span className="w-2 h-8 bg-purple-500 rounded-full" /> Hackathons & Awards
+                        <span className="w-2 h-8 bg-[var(--accent-primary)] rounded-full" /> Hackathons & Awards
                     </motion.h2>
 
-                    <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {achievements.map((item, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className="bg-white/5 p-6 rounded-xl hover:bg-white/10 transition-colors border border-white/5 group relative"
+                                className="p-6 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl hover:border-[var(--accent-primary)]/50 transition-all duration-300 group flex flex-col relative overflow-hidden"
                             >
-                                <div className="flex justify-between items-start mb-3">
-                                    <h4 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors pr-8">{item.title}</h4>
-                                    <a href={item.link || "#"} className="text-gray-500 hover:text-purple-400 transition-colors p-1" title="View Certificate" target={item.link ? "_blank" : "_self"} rel={item.link ? "noopener noreferrer" : ""}>
+                                <div className="flex justify-between items-start mb-4">
+                                    <h4 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors pr-8">{item.title}</h4>
+                                    <a href={item.link || "#"} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors p-1" title="View Certificate" target={item.link ? "_blank" : "_self"} rel={item.link ? "noopener noreferrer" : ""}>
                                         <ExternalLink className="w-5 h-5" />
                                     </a>
                                 </div>
-                                <p className="text-gray-400 leading-relaxed text-sm mb-4">{item.desc}</p>
-                                <div className="flex flex-wrap gap-2">
+                                <p className="text-[var(--text-secondary)] leading-relaxed text-sm mb-6 flex-grow">{item.desc}</p>
+                                <div className="flex flex-wrap gap-2 mt-auto">
                                     {item.tags.map(tag => (
-                                        <span key={tag} className="px-2 py-1 bg-white/5 rounded text-xs text-gray-500 border border-white/5">
+                                        <span key={tag} className="px-2 py-1 bg-[var(--bg-primary)] rounded text-xs text-[var(--text-secondary)] border border-[var(--border-primary)]">
                                             {tag}
                                         </span>
                                     ))}

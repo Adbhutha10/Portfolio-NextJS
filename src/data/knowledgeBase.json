@@ -1,0 +1,127 @@
+{
+    "personal": {
+        "name": "Adbhutha Beere",
+        "bio": "CSE student at BVRIT specializing in Full Stack, ML, and Cloud. Passionate about building scalable, AI-driven solutions.",
+        "location": "India",
+        "links": {
+            "linkedin": "https://linkedin.com/in/adbhutha",
+            "github": "https://github.com/Adbhutha10",
+            "website": "https://adbhutha.me"
+        }
+    },
+    "education": [
+        {
+            "degree": "B.Tech in Computer Science Engineering",
+            "institution": "BVRIT Narsapur",
+            "period": "2023 - 2027",
+            "metrics": "CGPA: 9.57"
+        },
+        {
+            "degree": "Pre-University (Intermediate)",
+            "institution": "IIIT RGUKT Basar",
+            "period": "2021 - 2023",
+            "metrics": "CGPA: 9.25"
+        },
+        {
+            "degree": "Matriculation",
+            "institution": "Sri Sai Public School",
+            "period": "2021",
+            "metrics": "96.5%"
+        }
+    ],
+    "skills": {
+        "programming": ["Python", "JavaScript", "Java", "C", "C++", "SQL"],
+        "web": ["ReactJS", "Next.js", "Node.js", "Tailwind CSS", "Spring Boot", "HTML", "CSS"],
+        "ai_ml": ["TensorFlow", "PyTorch", "scikit-learn", "Transformers (Hugging Face)", "NLTK", "SpaCy", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+        "tools": ["Git", "GitHub", "Docker", "VS Code", "Postman", "Vercel", "Firebase", "Render", "Aiven", "Jupyter Notebook"]
+    },
+    "experience": [
+        {
+            "role": "Software Product Development Intern",
+            "company": "CYME AUTOMATION SYSTEMS PVT. LTD.",
+            "period": "FEB 2026 – APR 2026",
+            "highlights": [
+                "Developed algorithms for real-time monitoring and data acquisition applications.",
+                "Built database modules to store and process system data.",
+                "Assisted in software design, development, and testing of monitoring applications."
+            ]
+        },
+        {
+            "role": "Technical Co-Lead",
+            "company": "GDG ON CAMPUS",
+            "period": "NOV 2025 - PRESENT",
+            "highlights": [
+                "Organizing workshops, hackathons, and technical sessions on web development, cloud, and AI.",
+                "Fostering a peer learning environment through study jams and coding meetups."
+            ]
+        },
+        {
+            "role": "Feedback and Review Manager",
+            "company": "CODING BRIGADE BVRIT",
+            "period": "DEC 2025 - PRESENT",
+            "desc": "Managing and reviewing project submissions to ensure quality and adherence to coding standards."
+        },
+        {
+            "role": "Open Source Contributor",
+            "company": "GIRLSCRIPT SUMMER OF CODE",
+            "period": "JULY 2025 - OCT 2025",
+            "desc": "Contributed to multiple open-source repositories, fixing bugs and implementing new features."
+        }
+    ],
+    "projects": [
+        {
+            "title": "BVRIT Alumni-Student Connect",
+            "tech": ["React", "Vite", "Firebase", "Gemini API"],
+            "summary": "Role-based networking platform with dashboards and mentorship matching.",
+            "link": "https://minor-project-64ad1.web.app/"
+        },
+        {
+            "title": "NRSC Cloud & Shadow Masking",
+            "tech": ["Python", "K-Means", "ISODATA", "Machine Learning"],
+            "summary": "Automated pipeline for satellite imagery masking developed at ISRO.",
+            "metrics": ">95% accuracy in cloud detection",
+            "publication": "IEEE Xplore (ICCPCT 2025)"
+        },
+        {
+            "title": "Real-Time Court Case Tracking",
+            "tech": ["Flutter", "Python", "REST APIs"],
+            "summary": "Mobile app for advocates fetching live court case data with color-coded alerts."
+        },
+        {
+            "title": "Query Management System",
+            "tech": ["Spring Boot", "React", "MySQL"],
+            "summary": "Enterprise query platform with OTP auth and real-time tracking."
+        },
+        {
+            "title": "Crop Price Prediction",
+            "tech": ["Python", "Scikit-Learn", "Regression"],
+            "summary": "ML model forecasting crop prices using historical market data."
+        }
+    ],
+    "achievements": [
+        {
+            "title": "Best Paper Award – National Seminar on AI (2025)",
+            "desc": "Awarded for the research paper 'Personalized AI-Enhanced Alumni Association Platform'."
+        },
+        {
+            "title": "National Semi-Finalist – Flipkart GRID 7.0 (2025)",
+            "desc": "Advanced through multiple technical screening rounds among thousands of teams."
+        },
+        {
+            "title": "Technova 2025 Winner",
+            "desc": "Developed 'DebtEase' finance assistant with AI insights."
+        }
+    ],
+    "certifications": [
+        { "name": "Oracle Cloud Database Services 2025", "issuer": "Oracle" },
+        { "name": "AWS Solutions Architecture Simulation", "issuer": "Forage" },
+        { "name": "Data Analytics Job Simulation", "issuer": "Deloitte Australia" },
+        { "name": "The Joy of Computing Using Python", "issuer": "NPTEL (IIT Madras)" }
+    ],
+    "research": {
+        "title": "ICCPCT 2025: Research Paper",
+        "platform": "IEEE Xplore",
+        "topic": "Cloud masking using resourcesat-2 images",
+        "link": "https://ieeexplore.ieee.org/document/11176562"
+    }
+}
