@@ -173,18 +173,18 @@ export default function About() {
                                 </div>
 
                                 <div className="relative group">
-                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[#0a0a0a] group-hover:bg-purple-500 transition-colors duration-300" />
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[var(--bg-primary)] group-hover:bg-purple-500 transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-[var(--text-primary)]">Technical Co-Lead</h4>
-                                    <p className="text-sm text-purple-300 font-mono tracking-wide mb-3 mt-1">GDG ON CAMPUS • NOV 2025 - PRESENT</p>
+                                    <p className="text-sm text-purple-600 dark:text-purple-300 font-mono tracking-wide mb-3 mt-1">GDG ON CAMPUS • NOV 2025 - PRESENT</p>
                                     <p className="text-[var(--text-secondary)] leading-relaxed">
                                         Organizing workshops, hackathons, and technical sessions on web development, cloud, and AI while fostering a peer learning environment through study jams and coding meetups. Collaborating with student developers, guiding project-building activities, and connecting the community with the broader GDG network to enhance real-world technical exposure.
                                     </p>
                                 </div>
 
                                 <div className="relative group">
-                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[#0a0a0a] group-hover:bg-purple-500 transition-colors duration-300" />
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-purple-500 bg-[var(--bg-primary)] group-hover:bg-purple-500 transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-[var(--text-primary)]">Open Source Contributor</h4>
-                                    <p className="text-sm text-purple-300 font-mono tracking-wide mb-3 mt-1">GIRLSCRIPT SUMMER OF CODE • JULY 2025 - OCT 2025</p>
+                                    <p className="text-sm text-purple-600 dark:text-purple-300 font-mono tracking-wide mb-3 mt-1">GIRLSCRIPT SUMMER OF CODE • JULY 2025 - OCT 2025</p>
                                     <p className="text-[var(--text-secondary)] leading-relaxed">
                                         Contributed to multiple open-source repositories by fixing bugs, implementing new features, and improving documentation quality. Collaborated with maintainers and contributors using Git, GitHub, and issue tracking systems. Enhanced frontend and backend components with technologies such as ReactJS, Firebase, and Node.js while gaining hands-on experience working with real-world codebases and version control workflows.
                                     </p>
@@ -200,7 +200,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="border-t border-white/5 pt-16"
+                    className="border-t border-[var(--border-primary)] pt-16"
                 >
                     <h3 className="text-3xl font-bold mb-12 text-blue-400 flex items-center gap-3 justify-center">
                         <span className="w-12 h-1 bg-blue-500 rounded-full"></span> Education
@@ -229,7 +229,7 @@ export default function About() {
                                     <h4 className="text-xl font-bold text-[var(--text-primary)]">Pre-University</h4>
                                     <p className="text-[var(--text-secondary)] mt-1">IIIT RGUKT Basar</p>
                                 </div>
-                                <span className="px-3 py-1 bg-white/10 text-gray-400 text-xs font-mono rounded-full">2021 - 2023</span>
+                                <span className="px-3 py-1 bg-[var(--border-primary)] text-[var(--text-secondary)] text-xs font-mono rounded-full">2021 - 2023</span>
                             </div>
                             <div className="flex items-center gap-2 mt-auto text-sm text-[var(--text-secondary)]">
                                 <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
@@ -244,7 +244,7 @@ export default function About() {
                                     <h4 className="text-xl font-bold text-[var(--text-primary)]">Matriculation</h4>
                                     <p className="text-[var(--text-secondary)] mt-1">Sri Sai Public School</p>
                                 </div>
-                                <span className="px-3 py-1 bg-white/10 text-gray-400 text-xs font-mono rounded-full">2021</span>
+                                <span className="px-3 py-1 bg-[var(--border-primary)] text-[var(--text-secondary)] text-xs font-mono rounded-full">2021</span>
                             </div>
                             <div className="flex items-center gap-2 mt-auto text-sm text-[var(--text-secondary)]">
                                 <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>

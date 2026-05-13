@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Adbhutha Beere | Portfolio",
     description: "Building scalable AI solutions and full-stack applications.",
-    url: "https://sravyachowdery.me",
+    url: "https://adbhutha.me",
     siteName: "Adbhutha Beere Portfolio",
     images: [
       {
