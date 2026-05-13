@@ -103,7 +103,7 @@ export default function Projects() {
     const selectedProject = projects.find(p => p.id === selectedId);
 
     return (
-        <section className="relative min-h-screen py-24 px-6 md:px-12 lg:px-24 bg-[var(--bg-primary)] text-white transition-colors duration-500">
+        <section id="projects" className="relative min-h-screen py-24 px-6 md:px-12 lg:px-24 bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-500">
             <div className="max-w-7xl mx-auto">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -142,10 +142,10 @@ export default function Projects() {
                                             <motion.div layoutId={`category-${project.id}`} className="text-sm font-mono text-[var(--accent-primary)] tracking-widest uppercase">
                                                 {project.category}
                                             </motion.div>
-                                            <motion.h3 layoutId={`title-${project.id}`} className="text-3xl font-bold group-hover:text-[var(--accent-primary)] transition-colors pr-12">
+                                            <motion.h3 layoutId={`title-${project.id}`} className="text-3xl font-bold group-hover:text-[var(--accent-primary)] transition-colors pr-12 text-[var(--text-primary)]">
                                                 {project.title}
                                             </motion.h3>
-                                            <motion.p layoutId={`desc-${project.id}`} className="text-gray-300 leading-relaxed text-lg line-clamp-3">
+                                            <motion.p layoutId={`desc-${project.id}`} className="text-[var(--text-secondary)] leading-relaxed text-lg line-clamp-3">
                                                 {project.description}
                                             </motion.p>
                                         </div>
@@ -182,7 +182,7 @@ export default function Projects() {
                         {/* Expanding Modal Card */}
                         <motion.div
                             layoutId={`card-${selectedProject.id}`}
-                            className="relative w-full max-w-5xl bg-[var(--bg-primary)] rounded-3xl border border-[var(--border-primary)] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden z-10 my-auto flex flex-col max-h-[90vh]"
+                            className="relative w-full max-w-5xl bg-[var(--bg-primary)] rounded-3xl border border-[var(--border-primary)] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden z-10 my-auto flex flex-col max-h-[90vh] transition-colors duration-500"
                         >
                             {/* Premium Header Gradient */}
                             <div className="absolute top-0 left-0 right-0 h-24 md:h-40 bg-gradient-to-b from-[var(--accent-primary)]/20 via-[var(--accent-secondary)]/10 to-transparent pointer-events-none" />
@@ -190,7 +190,7 @@ export default function Projects() {
                             {/* Close Button */}
                             <button 
                                 onClick={() => setSelectedId(null)}
-                                className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white transition-all transform hover:scale-105 z-20"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all transform hover:scale-105 z-20"
                             >
                                 <X className="w-6 h-6" />
                             </button>
@@ -206,7 +206,7 @@ export default function Projects() {
                                     {selectedProject.category}
                                 </motion.div>
 
-                                <motion.h3 layoutId={`title-${selectedProject.id}`} className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-10 text-white tracking-tight">
+                                <motion.h3 layoutId={`title-${selectedProject.id}`} className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-10 text-[var(--text-primary)] tracking-tight">
                                     {selectedProject.title}
                                 </motion.h3>
 
@@ -214,14 +214,14 @@ export default function Projects() {
                                     {/* Left Column: Description & Highlights */}
                                     <div className="lg:col-span-2 space-y-12">
                                         <div>
-                                            <h4 className="text-2xl font-semibold mb-6 text-white/90">Overview</h4>
-                                            <motion.p layoutId={`desc-${selectedProject.id}`} className="text-gray-300 text-lg leading-relaxed">
+                                            <h4 className="text-2xl font-semibold mb-6 text-[var(--text-primary)] opacity-90">Overview</h4>
+                                            <motion.p layoutId={`desc-${selectedProject.id}`} className="text-[var(--text-secondary)] text-lg leading-relaxed">
                                                 {selectedProject.longDescription}
                                             </motion.p>
                                         </div>
 
-                                        <div className="bg-white/5 rounded-3xl p-8 border border-white/5">
-                                            <h4 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+                                        <div className="bg-[var(--bg-secondary)] rounded-3xl p-8 border border-[var(--border-primary)]">
+                                            <h4 className="text-2xl font-semibold mb-6 flex items-center gap-3 text-[var(--text-primary)]">
                                                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
                                                 Key Highlights
                                             </h4>
@@ -232,7 +232,7 @@ export default function Projects() {
                                                         initial={{ opacity: 0, x: -20 }}
                                                         animate={{ opacity: 1, x: 0 }}
                                                         transition={{ delay: 0.2 + (i * 0.1) }}
-                                                        className="flex items-start gap-4 text-gray-300 text-lg"
+                                                        className="flex items-start gap-4 text-[var(--text-secondary)] text-lg"
                                                     >
                                                         <svg className="w-6 h-6 text-blue-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                                                         <span className="leading-relaxed">{highlight}</span>
@@ -244,13 +244,13 @@ export default function Projects() {
 
                                     {/* Right Column: Tech Stack & Links */}
                                     <div className="space-y-8">
-                                        <div className="bg-gradient-to-br from-blue-900/10 to-purple-900/10 rounded-3xl p-8 border border-white/5">
-                                            <h4 className="text-xl font-semibold mb-6">Tech Stack</h4>
+                                        <div className="bg-[var(--bg-secondary)] rounded-3xl p-8 border border-[var(--border-primary)]">
+                                            <h4 className="text-xl font-semibold mb-6 text-[var(--text-primary)]">Tech Stack</h4>
                                             <div className="flex flex-wrap gap-2">
                                                 {selectedProject.techStack.map((tech, i) => (
                                                     <span 
                                                         key={i}
-                                                        className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm font-medium text-gray-200"
+                                                        className="px-4 py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded-full text-sm font-medium text-[var(--text-secondary)]"
                                                     >
                                                         {tech}
                                                     </span>

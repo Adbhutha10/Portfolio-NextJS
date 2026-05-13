@@ -43,7 +43,7 @@ export default function Contact() {
     };
 
     return (
-        <footer id="contact" className="py-24 px-6 md:px-12 lg:px-24 bg-[var(--bg-primary)] text-white border-t border-[var(--border-primary)] relative overflow-hidden transition-colors duration-500">
+        <footer id="contact" className="py-24 px-6 md:px-12 lg:px-24 bg-[var(--bg-primary)] text-[var(--text-primary)] border-t border-[var(--border-primary)] relative overflow-hidden transition-colors duration-500">
             {/* Background Accents */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-primary)]/50 to-transparent" />
             
@@ -57,11 +57,11 @@ export default function Contact() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1]">
+                            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1] text-[var(--text-primary)]">
                                 LET'S BUILD <br /> 
                                 <span className="text-[var(--accent-primary)]">THE FUTURE.</span>
                             </h2>
-                            <p className="text-gray-400 text-lg max-w-md leading-relaxed">
+                            <p className="text-[var(--text-secondary)] text-lg max-w-md leading-relaxed">
                                 Currently seeking opportunities in Full-Stack Development and AI/ML. Let's collaborate on something extraordinary.
                             </p>
                         </motion.div>
@@ -69,16 +69,16 @@ export default function Contact() {
                         <div className="space-y-6">
                             <div className="flex flex-col gap-2">
                                 <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Email</span>
-                                <a href="mailto:23211a0533@bvrit.ac.in" className="text-2xl md:text-3xl font-medium text-white hover:text-[var(--accent-primary)] transition-colors underline-offset-8 decoration-1">
+                                <a href="mailto:23211a0533@bvrit.ac.in" className="text-2xl md:text-3xl font-medium text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors underline-offset-8 decoration-1">
                                     23211a0533@bvrit.ac.in
                                 </a>
                             </div>
 
                             <div className="flex gap-8 pt-4">
-                                <a href="https://linkedin.com/in/adbhutha" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                <a href="https://linkedin.com/in/adbhutha" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-2 group">
                                     LinkedIn <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
                                 </a>
-                                <a href="https://github.com/Adbhutha10" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                                <a href="https://github.com/Adbhutha10" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-2 group">
                                     GitHub <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
                                 </a>
                             </div>
@@ -99,12 +99,12 @@ export default function Contact() {
                                     <CheckCircle2 className="w-10 h-10" />
                                 </div>
                                 <div className="space-y-2">
-                                    <h3 className="text-2xl font-bold">Message Sent!</h3>
-                                    <p className="text-gray-400">Thanks for reaching out, Adbhutha will get back to you soon.</p>
+                                    <h3 className="text-2xl font-bold text-[var(--text-primary)]">Message Sent!</h3>
+                                    <p className="text-[var(--text-secondary)]">Thanks for reaching out, Adbhutha will get back to you soon.</p>
                                 </div>
                                 <button 
                                     onClick={() => setStatus('idle')}
-                                    className="px-8 py-3 bg-white/5 hover:bg-white/10 rounded-full text-sm font-bold transition-all"
+                                    className="px-8 py-3 bg-[var(--bg-primary)] hover:bg-[var(--border-primary)] border border-[var(--border-primary)] rounded-full text-sm font-bold transition-all text-[var(--text-primary)]"
                                 >
                                     Send another message
                                 </button>
@@ -120,7 +120,7 @@ export default function Contact() {
                                             suppressHydrationWarning
                                             value={formData.name}
                                             onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 text-sm focus:outline-none focus:border-[var(--accent-primary)]/50 transition-all text-white"
+                                            className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 text-sm focus:outline-none focus:border-[var(--accent-primary)]/50 transition-all text-[var(--text-primary)]"
                                             placeholder="Your name"
                                         />
                                     </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                                             suppressHydrationWarning
                                             value={formData.email}
                                             onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 text-sm focus:outline-none focus:border-[var(--accent-primary)]/50 transition-all text-white"
+                                            className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 text-sm focus:outline-none focus:border-[var(--accent-primary)]/50 transition-all text-[var(--text-primary)]"
                                             placeholder="your@email.com"
                                         />
                                     </div>
@@ -144,7 +144,7 @@ export default function Contact() {
                                         rows={4}
                                         value={formData.message}
                                         onChange={e => setFormData({ ...formData, message: e.target.value })}
-                                        className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 text-sm focus:outline-none focus:border-[var(--accent-primary)]/50 transition-all text-white resize-none"
+                                        className="w-full bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 text-sm focus:outline-none focus:border-[var(--accent-primary)]/50 transition-all text-[var(--text-primary)] resize-none"
                                         placeholder="Hello! I'm interested in..."
                                     />
                                 </div>

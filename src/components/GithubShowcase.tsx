@@ -31,22 +31,40 @@ const LANGUAGE_COLORS: Record<string, string> = {
 export default function GithubShowcase() {
     const [repos, setRepos] = useState<Repo[]>([]);
     const [loading, setLoading] = useState(true);
+    const [activeTheme, setActiveTheme] = useState('default');
+    const [imageError, setImageError] = useState(false);
 
     useEffect(() => {
-        const fetchRepos = async () => {
-            try {
-                const response = await fetch('https://api.github.com/users/Adbhutha10/repos?sort=updated&per_page=3');
-                if (!response.ok) throw new Error('Failed to fetch');
-                const data = await response.json();
-                setRepos(data);
-            } catch (err) {
-                console.error("Github fetch error:", err);
-            } finally {
-                setLoading(false);
-            }
-        };
+        // Initial theme check
+        if (typeof window !== 'undefined') {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'default';
+            setActiveTheme(currentTheme);
 
-        fetchRepos();
+            const observer = new MutationObserver(() => {
+                setActiveTheme(document.documentElement.getAttribute('data-theme') || 'default');
+            });
+
+            observer.observe(document.documentElement, { attributes: true });
+
+            // Fetch Repos
+            const fetchRepos = async () => {
+                try {
+                    const response = await fetch('https://api.github.com/users/Adbhutha10/repos?sort=updated&per_page=3');
+                    if (!response.ok) throw new Error('Failed to fetch');
+                    const data = await response.json();
+                    if (Array.isArray(data)) {
+                        setRepos(data);
+                    }
+                } catch (err) {
+                    console.error("Github fetch error:", err);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            fetchRepos();
+            return () => observer.disconnect();
+        }
     }, []);
 
     return (
@@ -66,7 +84,7 @@ export default function GithubShowcase() {
                             <Github className="w-6 h-6" />
                             <span className="text-sm font-mono tracking-widest uppercase">Open Source</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
                             Codebase Activity
                         </h2>
                     </motion.div>
@@ -79,10 +97,10 @@ export default function GithubShowcase() {
                     >
                         <div className="px-6 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl backdrop-blur-sm flex items-center gap-4">
                             <div className="flex flex-col">
-                                <span className="text-[10px] text-gray-500 uppercase font-mono tracking-tighter">Profile</span>
-                                <span className="text-sm font-medium text-white">@Adbhutha10</span>
+                                <span className="text-[10px] text-[var(--text-secondary)] opacity-60 uppercase font-mono tracking-tighter">Profile</span>
+                                <span className="text-sm font-medium text-[var(--text-primary)]">@Adbhutha10</span>
                             </div>
-                            <div className="w-[1px] h-8 bg-white/10" />
+                            <div className="w-[1px] h-8 bg-[var(--border-primary)]" />
                             <a 
                                 href="https://github.com/Adbhutha10" 
                                 target="_blank" 
@@ -107,39 +125,60 @@ export default function GithubShowcase() {
                         <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)]/5 via-transparent to-[var(--accent-secondary)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         
                         <div className="w-full lg:w-1/2 space-y-6 relative z-10">
-                            <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                            <h3 className="text-2xl font-bold text-[var(--text-primary)] flex items-center gap-3">
                                 <Code2 className="w-6 h-6 text-[var(--accent-primary)]" />
                                 Growth & Contributions
                             </h3>
-                            <p className="text-gray-400 leading-relaxed">
+                            <p className="text-[var(--text-secondary)] leading-relaxed">
                                 Actively building and contributing to open-source ecosystems. 
                                 Focused on scalable architectures, AI integrations, and clean code practices.
                             </p>
                             <div className="flex gap-6">
                                 <div className="text-center">
-                                    <p className="text-2xl font-bold text-white">30+</p>
-                                    <p className="text-[10px] text-gray-500 uppercase font-mono">Repositories</p>
+                                    <p className="text-2xl font-bold text-[var(--text-primary)]">30+</p>
+                                    <p className="text-[10px] text-[var(--text-secondary)] opacity-60 uppercase font-mono">Repositories</p>
                                 </div>
-                                <div className="w-[1px] h-10 bg-white/10" />
+                                <div className="w-[1px] h-10 bg-[var(--border-primary)]" />
                                 <div className="text-center">
-                                    <p className="text-2xl font-bold text-white">IEEE</p>
-                                    <p className="text-[10px] text-gray-500 uppercase font-mono">Published</p>
+                                    <p className="text-2xl font-bold text-[var(--text-primary)]">IEEE</p>
+                                    <p className="text-[10px] text-[var(--text-secondary)] opacity-60 uppercase font-mono">Published</p>
                                 </div>
-                                <div className="w-[1px] h-10 bg-white/10" />
+                                <div className="w-[1px] h-10 bg-[var(--border-primary)]" />
                                 <div className="text-center">
-                                    <p className="text-2xl font-bold text-white">GDG</p>
-                                    <p className="text-[10px] text-gray-500 uppercase font-mono">Co-Lead</p>
+                                    <p className="text-2xl font-bold text-[var(--text-primary)]">GDG</p>
+                                    <p className="text-[10px] text-[var(--text-secondary)] opacity-60 uppercase font-mono">Co-Lead</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* GitHub Contribution Graph Embedded (using public URL) */}
+                        {/* GitHub Contribution Graph Embedded */}
                         <div className="w-full lg:w-auto flex flex-col items-center gap-4 relative z-10">
-                             <img 
-                                src="https://github-readme-stats.vercel.app/api?username=Adbhutha10&show_icons=true&theme=transparent&hide_border=true&title_color=3b82f6&text_color=9ca3af&icon_color=3b82f6&bg_color=121212&hide_rank=true" 
-                                alt="GitHub Stats" 
-                                className="max-w-full h-auto rounded-xl"
-                            />
+                            {!imageError ? (
+                                <img 
+                                    src={`https://github-readme-stats.vercel.app/api?username=Adbhutha10&show_icons=true&theme=${activeTheme === 'light' ? 'default' : 'dark'}&hide_border=true&title_color=3b82f6&icon_color=3b82f6&hide_rank=true`} 
+                                    alt="GitHub Stats" 
+                                    className="max-w-full h-auto rounded-xl transition-opacity duration-300"
+                                    key={activeTheme}
+                                    loading="lazy"
+                                    onError={() => setImageError(true)}
+                                />
+                            ) : (
+                                <div className="p-8 border border-[var(--border-primary)] rounded-2xl bg-[var(--bg-primary)] flex flex-col items-center gap-4 text-center max-w-sm">
+                                    <Github className="w-12 h-12 text-[var(--accent-primary)] opacity-50" />
+                                    <div>
+                                        <p className="text-[var(--text-primary)] font-bold">GitHub Analytics</p>
+                                        <p className="text-[var(--text-secondary)] text-xs mt-1">Direct statistics from @Adbhutha10</p>
+                                    </div>
+                                    <a 
+                                        href="https://github.com/Adbhutha10" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-[var(--accent-primary)] text-xs font-mono hover:underline"
+                                    >
+                                        Visit GitHub Profile ↗
+                                    </a>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </motion.div>
@@ -177,10 +216,10 @@ export default function GithubShowcase() {
                                             </span>
                                         </div>
                                     </div>
-                                    <h4 className="font-bold text-lg text-white group-hover:text-[var(--accent-primary)] transition-colors truncate">
+                                    <h4 className="font-bold text-lg text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors truncate">
                                         {repo.name}
                                     </h4>
-                                    <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed h-10">
+                                    <p className="text-sm text-[var(--text-secondary)] line-clamp-2 leading-relaxed h-10">
                                         {repo.description || "Experimental repository and open-source contribution."}
                                     </p>
                                 </div>
@@ -209,9 +248,9 @@ export default function GithubShowcase() {
                 >
                     <a 
                         href="https://github.com/Adbhutha10"
-                        target="_blank"
+                        target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl text-white font-medium hover:bg-white/10 transition-all group"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-medium hover:bg-[var(--border-primary)] transition-all group rounded-2xl"
                     >
                         See more on GitHub
                         <Github className="w-4 h-4 group-hover:rotate-12 transition-transform" />
