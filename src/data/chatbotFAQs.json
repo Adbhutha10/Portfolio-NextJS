@@ -43,7 +43,7 @@
             "em chestunnav",
             "kya chal raha hai"
         ],
-        "a": "All systems go! 😄 Ready to discuss Adbhutha's projects or her research at NRSC!"
+        "a": "All systems go! 😄 Ready to discuss Adbhutha's projects or her computational biology research!"
     },
     {
         "keys": [
@@ -80,7 +80,7 @@
             "options",
             "help me"
         ],
-        "a": "This assistant can provide information about Adbhutha's projects (like the NRSC satellite work), her skills in ML/Web Dev, her 9.57 CGPA, or her roles at GDG and Coding Brigade."
+        "a": "This assistant can provide information about Adbhutha's projects (like her EGFR-ERK computational biology research), her skills in ML/Web Dev, her 9.48 CGPA, or her roles at GDG and Coding Brigade."
     },
     {
         "keys": [
@@ -89,7 +89,7 @@
             "em adagali",
             "topics"
         ],
-        "a": "Try asking about her:\n- 'Research Paper' (IEEE Cloud Masking)\n- 'NRSC Project'\n- 'BVRIT Connect' (Alumni Platform)\n- 'Technical Skills' (Full Stack & ML)\n- 'Leadership' (GDG & CBB)"
+        "a": "Try asking about her:\n- 'Research Paper' (IEEE Cloud Masking)\n- 'PHCCO Project' (Computational Biology)\n- 'BVRIT Connect' (Alumni Platform)\n- 'Technical Skills' (Full Stack & ML)\n- 'Leadership' (GDG & CBB)"
     },
     {
         "keys": [
@@ -98,7 +98,7 @@
             "resume link",
             "biodata"
         ],
-        "a": "Adbhutha's resume highlights her 9.57 CGPA and high-impact projects. You can request a copy via LinkedIn or check the contact section!"
+        "a": "Adbhutha's resume highlights her 9.48 CGPA and high-impact projects. You can request a copy via LinkedIn or check the contact section!"
     },
     {
         "keys": [
@@ -118,7 +118,7 @@
             "experience unda",
             "internship experience"
         ],
-        "a": "Adbhutha has served as:\n- Technical Co-Lead at GDG on Campus\n- Feedback and Review Manager at Coding Brigade\n- Contributor at GirlScript Summer of Code (GSSoC)\n- Project lead for satellite imagery research at NRSC."
+        "a": "Adbhutha has served as:\n- Summer Research Trainee at PHCCO, IISc Bangalore (May–Jun 2026)\n- Software Product Development Intern at CYME Automation Systems (Feb–Apr 2026)\n- Technical Co-Lead at GDG on Campus\n- Feedback and Review Manager at Coding Brigade\n- Contributor at GirlScript Summer of Code (GSSoC)"
     },
     {
         "keys": [
@@ -165,13 +165,15 @@
     },
     {
         "keys": [
-            "cloud masking",
-            "satellite images",
-            "resourcesat",
-            "nrsc project",
-            "isro"
+            "phcco project",
+            "egfr",
+            "hypoxia",
+            "erk",
+            "gefitinib",
+            "computational biology",
+            "biomodels"
         ],
-        "a": "Adbhutha worked on Cloud Masking using Resourcesat-2 images at NRSC (ISRO). She used unsupervised classification techniques like K-means and ISODATA to accurately detect cloud cover in satellite imagery."
+        "a": "Adbhutha's PHCCO project is a computational biology study extending BioModels 623. It models the EGFR-ERK signaling pathway to compare hypoxia-driven HIF-2α EGFR upregulation vs gene amplification, exploring how divergent ERK kinetics affect sensitivity to the inhibitor Gefitinib."
     },
     {
         "keys": [
@@ -223,7 +225,7 @@
             "percentage",
             "marks"
         ],
-        "a": "Adbhutha maintains an exceptional academic record with a CGPA of 9.57!"
+        "a": "Adbhutha maintains an exceptional academic record with a CGPA of 9.48!"
     },
     {
         "keys": [

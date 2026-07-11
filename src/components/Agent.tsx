@@ -64,7 +64,7 @@ const FAQS = [
     {
         q: "major projects",
         label: "Projects",
-        a: "Key projects include 'BVRIT Alumni-Student Connect', 'NRSC Cloud Masking', and an 'ML Crop Price Prediction' model."
+        a: "Key projects include 'BVRIT Alumni-Student Connect', 'PHCCO Computational Biology Research' (EGFR-ERK pathway modeling), and an 'ML Crop Price Prediction' model."
     },
     {
         q: "contact",

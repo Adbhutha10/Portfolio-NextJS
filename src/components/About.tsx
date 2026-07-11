@@ -140,6 +140,18 @@ export default function About() {
 
                             <div className="space-y-12 border-l border-white/10 pl-8 ml-4">
                                 <div className="relative group">
+                                    <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-emerald-400 bg-[var(--bg-primary)] group-hover:bg-emerald-400 transition-colors duration-300" />
+                                    <h4 className="text-xl font-bold text-[var(--text-primary)]">Summer Research Trainee</h4>
+                                    <p className="text-sm text-emerald-400 font-mono tracking-wide mb-3 mt-1">PARAM HANSA CENTER FOR COMPUTATIONAL ONCOLOGY (PHCCO), IISc BANGALORE • MAY 2026 – JUN 2026</p>
+                                    <ul className="text-[var(--text-secondary)] leading-relaxed list-disc list-outside ml-4 space-y-2">
+                                        <li>Selected for a highly competitive full-time summer training program at IISc Bangalore's Department of Bioengineering, under Prof. Mohit Kumar Jolly.</li>
+                                        <li>Studied computational oncology concepts including EGFR-ERK pathway modeling, hypoxia-driven resistance mechanisms, and ODE-based simulations.</li>
+                                        <li>Attended dedicated classes, hands-on sessions, research seminars, and mentorship sessions with leading experts in computational and experimental cancer biology.</li>
+                                        <li>Completed a research work report on EGFR upregulation mechanisms and their effect on Gefitinib inhibitor sensitivity.</li>
+                                    </ul>
+                                </div>
+
+                                <div className="relative group">
                                     <span className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--bg-primary)] group-hover:bg-[var(--accent-primary)] transition-colors duration-300" />
                                     <h4 className="text-xl font-bold text-[var(--text-primary)]">Software Product Development Intern</h4>
                                     <p className="text-sm text-[var(--accent-primary)] font-mono tracking-wide mb-3 mt-1">CYME AUTOMATION SYSTEMS PVT. LTD. • FEB 2026 – APR 2026</p>
@@ -218,7 +230,7 @@ export default function About() {
                             </div>
                             <div className="flex items-center gap-2 mt-auto text-sm text-[var(--text-secondary)]">
                                 <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                                CGPA: <span className="text-[var(--text-primary)] font-medium text-lg">9.57</span>
+                                CGPA: <span className="text-[var(--text-primary)] font-medium text-lg">9.48</span>
                             </div>
                         </div>
 

@@ -14,7 +14,7 @@
             "degree": "B.Tech in Computer Science Engineering",
             "institution": "BVRIT Narsapur",
             "period": "2023 - 2027",
-            "metrics": "CGPA: 9.57"
+            "metrics": "CGPA: 9.48"
         },
         {
             "degree": "Pre-University (Intermediate)",
@@ -36,6 +36,17 @@
         "tools": ["Git", "GitHub", "Docker", "VS Code", "Postman", "Vercel", "Firebase", "Render", "Aiven", "Jupyter Notebook"]
     },
     "experience": [
+        {
+            "role": "Summer Research Trainee",
+            "company": "PARAM HANSA CENTER FOR COMPUTATIONAL ONCOLOGY (PHCCO), IISc BANGALORE",
+            "period": "MAY 2026 – JUN 2026",
+            "highlights": [
+                "Selected for highly competitive full-time summer training at IISc Bangalore under Prof. Mohit Kumar Jolly, Dept. of Bioengineering.",
+                "Studied computational oncology: EGFR-ERK pathway modeling, hypoxia-driven resistance, and ODE-based simulations.",
+                "Attended research seminars and mentorship sessions with experts in computational and experimental cancer biology.",
+                "Completed a research work report on EGFR upregulation and Gefitinib inhibitor sensitivity."
+            ]
+        },
         {
             "role": "Software Product Development Intern",
             "company": "CYME AUTOMATION SYSTEMS PVT. LTD.",
@@ -76,11 +87,10 @@
             "link": "https://minor-project-64ad1.web.app/"
         },
         {
-            "title": "NRSC Cloud & Shadow Masking",
-            "tech": ["Python", "K-Means", "ISODATA", "Machine Learning"],
-            "summary": "Automated pipeline for satellite imagery masking developed at ISRO.",
-            "metrics": ">95% accuracy in cloud detection",
-            "publication": "IEEE Xplore (ICCPCT 2025)"
+            "title": "TKI Resistance Modeling — BioModels 623 Extended",
+            "tech": ["Python", "Tellurium", "Antimony/SBML", "SALib"],
+            "summary": "Computational model of Gefitinib resistance under hypoxia and gene amplification, simulating IC50 shifts and HIF-2α dynamics.",
+            "link": "https://github.com/Adbhutha10/PHCCO-Project"
         },
         {
             "title": "Real-Time Court Case Tracking",

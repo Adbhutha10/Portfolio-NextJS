@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GraduationCap, Cloud, Sprout, Ticket, MessageSquare, Smartphone, X } from 'lucide-react';
+import { GraduationCap, FlaskConical, Sprout, Ticket, MessageSquare, Smartphone, X } from 'lucide-react';
 import TiltCard from './TiltCard';
 
 const projects = [
@@ -23,18 +23,18 @@ const projects = [
     },
     {
         id: 2,
-        title: "NRSC Cloud & Shadow Masking",
-        category: "Machine Learning / Research",
-        description: "Automated pipeline for cloud/shadow masking from Resourcesat-2 images using unsupervised classification and ML enhancements.",
-        longDescription: "A sophisticated machine learning pipeline developed at the National Remote Sensing Centre (ISRO). It automates the detection and masking of clouds and cloud shadows in Resourcesat-2 satellite imagery. The system utilizes advanced unsupervised classification techniques, specifically K-means and ISODATA algorithms, outperforming traditional thresholding methods in accuracy and reliability.",
-        techStack: ["Python", "K-Means", "ISODATA", "Multi-spectral Analysis", "GIS Tools"],
+        title: "TKI Resistance Modeling — BioModels 623 Extended",
+        category: "Computational Biology / Research",
+        description: "Extended BioModels 623 (EGFR→ERK ODE system) to model Gefitinib resistance under hypoxia and gene amplification, simulating IC50 shifts, HIF-2α dynamics, drug washout, and oxygen-flickering.",
+        longDescription: "A systems biology project developed at IISc Bangalore's PHCCO program. Extends the published BioModels 623 EGFR-ERK ODE model with custom hypoxia and pharmacokinetics modules in Antimony/SBML. Simulates three cellular states (normoxia, hypoxia, gene amplification) and demonstrates how excess EGFR overwhelms TKI therapy. Key analyses include IC50 dose-response curves, drug washout/recovery kinetics, dynamic oxygen-flickering simulations, and Morris sensitivity analysis (SALib) that identifies HIF-2α synthesis rate and Hill cooperativity as the strongest levers for combination therapy design.",
+        techStack: ["Python", "Tellurium", "Antimony/SBML", "SALib (Morris)", "NumPy", "Matplotlib"],
         highlights: [
-            "Achieved >95% accuracy in cloud detection",
-            "Published research paper in IEEE Xplore (ICCPCT 2025)",
-            "Significantly reduced manual masking efforts for ISRO scientists"
+            "IC50 shifts confirm hypoxia & gene amplification require 10-100× more Gefitinib",
+            "Morris sensitivity analysis flags k_syn_HIF & Hill cooperativity as top drug targets",
+            "Dynamic O₂ flickering model captures oscillating tumor microenvironment behavior"
         ],
-        link: "https://github.com/Adbhutha10/NRSC-project",
-        icon: Cloud
+        link: "https://github.com/Adbhutha10/PHCCO-Project",
+        icon: FlaskConical
     },
     {
         id: 3,
